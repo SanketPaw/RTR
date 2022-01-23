@@ -72,6 +72,8 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT iMsg, WPARAM wParam, LPARAM lParam)
 	case WM_PAINT:
 		GetClientRect(hwnd, &rc);
 		hdc = BeginPaint(hwnd, &ps);
+		SetBkColor(hdc, RGB(0, 0, 0));
+		SetTextColor(hdc, RGB(0, 255, 0));
 		DrawText(hdc, "Hello, Windows 11 !!!", -1, &rc, DT_SINGLELINE | DT_CENTER | DT_VCENTER);
 		EndPaint(hwnd, &ps);
 		break;
