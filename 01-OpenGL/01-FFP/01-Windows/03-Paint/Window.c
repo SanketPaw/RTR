@@ -51,7 +51,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLi
 	UpdateWindow(hwnd);
 
 	// Message Loop
-	while (GetMessage(&msg,NULL,0,0))
+	while (GetMessage(&msg, NULL, 0, 0))
 	{
 		TranslateMessage(&msg);
 		DispatchMessage(&msg);
@@ -60,14 +60,27 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLi
 }
 
 // CallBack Function
-LRESULT CALLBACK WndProc(HWND hwnd, UINT iMsg, WPARAM wParam,LPARAM lParam)
+LRESULT CALLBACK WndProc(HWND hwnd, UINT iMsg, WPARAM wParam, LPARAM lParam)
 {
+	// code 
+	HDC hdc;
+	PAINTSTRUCT ps;
+	RECT rc;
+	switch (iMsg)
+	{
+	case WM_PAINT:
+		GetClientRect(hwnd, &rc);
+		hdc = BeginPaint(hwnd, &ps);
+		DrawText(hdc, "Hello, Windows 11 !!!", -1, &rc, DT_SINGLELINE | DT_CENTER | DT_VCENTER);
+		EndPaint(hwnd, &ps);
+		break;
+
 	case WM_DESTROY:
 		PostQuitMessage(0);
 		break;
 	default:
 		break;
-}
+	}
 
 	return DefWindowProc(hwnd, iMsg, wParam, lParam);
 }

@@ -51,7 +51,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLi
 	UpdateWindow(hwnd);
 
 	// Message Loop
-	while (GetMessage(&msg,NULL,0,0))
+	while (GetMessage(&msg, NULL, 0, 0))
 	{
 		TranslateMessage(&msg);
 		DispatchMessage(&msg);
@@ -60,14 +60,30 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLi
 }
 
 // CallBack Function
-LRESULT CALLBACK WndProc(HWND hwnd, UINT iMsg, WPARAM wParam,LPARAM lParam)
+LRESULT CALLBACK WndProc(HWND hwnd, UINT iMsg, WPARAM wParam, LPARAM lParam)
 {
+	// code 
+	switch (iMsg)
+	{
+	case WM_CREATE:
+		MessageBox(hwnd, TEXT("This Is WM_CREATE Message"), TEXT("Message"), MB_OK);
+		break;
+	case WM_KEYDOWN:
+		MessageBox(hwnd, TEXT("This Is WM_KEYDOWN Message"), TEXT("Message"), MB_OK);
+		break;
+	case WM_LBUTTONDOWN:
+		MessageBox(hwnd, TEXT("This Is WM_LBUTTONDOWN Message"), TEXT("Message"), MB_OK);
+		break;
+	case WM_RBUTTONDOWN:
+		MessageBox(hwnd, TEXT("This Is WM_RBUTTONDOWN Message"), TEXT("Message"), MB_OK);
+		break;
 	case WM_DESTROY:
+		MessageBox(hwnd, TEXT("This Is WM_DESTROY Message"), TEXT("Message"), MB_OK);
 		PostQuitMessage(0);
 		break;
 	default:
 		break;
-}
+	}
 
 	return DefWindowProc(hwnd, iMsg, wParam, lParam);
 }
