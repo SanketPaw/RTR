@@ -66,6 +66,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT iMsg, WPARAM wParam, LPARAM lParam)
 	HDC hdc;
 	PAINTSTRUCT ps;
 	RECT rc;
+	TCHAR szAppName[] = TEXT("Hello World !!!");
 	switch (iMsg)
 	{
 	case WM_PAINT:
