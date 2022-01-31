@@ -5,4 +5,5 @@ int main(void)
 {
     //code
     printf("Hello World !!!\n");    //Library Function
+    return 0;
 }
