@@ -77,3 +77,20 @@ void Function_Country(void) //function definition
     printf("I live In India.");
     printf("\n\n");
 }
+/*
+My
+
+Name
+
+Is
+
+Sanket
+
+Sunil
+
+Pawar
+
+Of ASTROMEDICOMP
+
+I live In India.
+*/

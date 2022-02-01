@@ -34,3 +34,12 @@ int MyAddition(int a_SSP,int b_SSP)   //function definition
     printf("\n\n");
     printf("Sum Of %d and %d = %d\n\n",a_SSP,b_SSP,sum_SSP);
 }
+/*
+Enter Integer Value For 'A' : 1223
+
+
+Enter Integer Value For 'B' : 345
+
+
+Sum Of 1223 and 345 = 2446
+*/

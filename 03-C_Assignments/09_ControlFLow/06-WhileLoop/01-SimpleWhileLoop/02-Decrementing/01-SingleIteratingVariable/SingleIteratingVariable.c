@@ -21,3 +21,17 @@ int main(void)
     return 0;
     
 }
+/*
+Printing digits 10 to 1: 
+
+         10
+         9
+         8
+         7
+         6
+         5
+         4
+         3
+         2
+         1
+*/

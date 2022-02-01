@@ -24,3 +24,353 @@ int main(void)
     }
     return 0;
 }
+/*
+i=1
+-----------
+
+        j_SSP=1
+        ---------
+
+                k_SSP=1
+                k_SSP=2
+                k_SSP=3
+        j_SSP=2
+        ---------
+
+                k_SSP=1
+                k_SSP=2
+                k_SSP=3
+        j_SSP=3
+        ---------
+
+                k_SSP=1
+                k_SSP=2
+                k_SSP=3
+        j_SSP=4
+        ---------
+
+                k_SSP=1
+                k_SSP=2
+                k_SSP=3
+        j_SSP=5
+        ---------
+
+                k_SSP=1
+                k_SSP=2
+                k_SSP=3
+
+
+i=2
+-----------
+
+        j_SSP=1
+        ---------
+
+                k_SSP=1
+                k_SSP=2
+                k_SSP=3
+        j_SSP=2
+        ---------
+
+                k_SSP=1
+                k_SSP=2
+                k_SSP=3
+        j_SSP=3
+        ---------
+
+                k_SSP=1
+                k_SSP=2
+                k_SSP=3
+        j_SSP=4
+        ---------
+
+                k_SSP=1
+                k_SSP=2
+                k_SSP=3
+        j_SSP=5
+        ---------
+
+                k_SSP=1
+                k_SSP=2
+                k_SSP=3
+
+
+i=3
+-----------
+
+        j_SSP=1
+        ---------
+
+                k_SSP=1
+                k_SSP=2
+                k_SSP=3
+        j_SSP=2
+        ---------
+
+                k_SSP=1
+                k_SSP=2
+                k_SSP=3
+        j_SSP=3
+        ---------
+
+                k_SSP=1
+                k_SSP=2
+                k_SSP=3
+        j_SSP=4
+        ---------
+
+                k_SSP=1
+                k_SSP=2
+                k_SSP=3
+        j_SSP=5
+        ---------
+
+                k_SSP=1
+                k_SSP=2
+                k_SSP=3
+
+
+i=4
+-----------
+
+        j_SSP=1
+        ---------
+
+                k_SSP=1
+                k_SSP=2
+                k_SSP=3
+        j_SSP=2
+        ---------
+
+                k_SSP=1
+                k_SSP=2
+                k_SSP=3
+        j_SSP=3
+        ---------
+
+                k_SSP=1
+                k_SSP=2
+                k_SSP=3
+        j_SSP=4
+        ---------
+
+                k_SSP=1
+                k_SSP=2
+                k_SSP=3
+        j_SSP=5
+        ---------
+
+                k_SSP=1
+                k_SSP=2
+                k_SSP=3
+
+
+i=5
+-----------
+
+        j_SSP=1
+        ---------
+
+                k_SSP=1
+                k_SSP=2
+                k_SSP=3
+        j_SSP=2
+        ---------
+
+                k_SSP=1
+                k_SSP=2
+                k_SSP=3
+        j_SSP=3
+        ---------
+
+                k_SSP=1
+                k_SSP=2
+                k_SSP=3
+        j_SSP=4
+        ---------
+
+                k_SSP=1
+                k_SSP=2
+                k_SSP=3
+        j_SSP=5
+        ---------
+
+                k_SSP=1
+                k_SSP=2
+                k_SSP=3
+
+
+i=6
+-----------
+
+        j_SSP=1
+        ---------
+
+                k_SSP=1
+                k_SSP=2
+                k_SSP=3
+        j_SSP=2
+        ---------
+
+                k_SSP=1
+                k_SSP=2
+                k_SSP=3
+        j_SSP=3
+        ---------
+
+                k_SSP=1
+                k_SSP=2
+                k_SSP=3
+        j_SSP=4
+        ---------
+
+                k_SSP=1
+                k_SSP=2
+                k_SSP=3
+        j_SSP=5
+        ---------
+
+                k_SSP=1
+                k_SSP=2
+                k_SSP=3
+
+
+i=7
+-----------
+
+        j_SSP=1
+        ---------
+
+                k_SSP=1
+                k_SSP=2
+                k_SSP=3
+        j_SSP=2
+        ---------
+
+                k_SSP=1
+                k_SSP=2
+                k_SSP=3
+        j_SSP=3
+        ---------
+
+                k_SSP=1
+                k_SSP=2
+                k_SSP=3
+        j_SSP=4
+        ---------
+
+                k_SSP=1
+                k_SSP=2
+                k_SSP=3
+        j_SSP=5
+        ---------
+
+                k_SSP=1
+                k_SSP=2
+                k_SSP=3
+
+
+i=8
+-----------
+
+        j_SSP=1
+        ---------
+
+                k_SSP=1
+                k_SSP=2
+                k_SSP=3
+        j_SSP=2
+        ---------
+
+                k_SSP=1
+                k_SSP=2
+                k_SSP=3
+        j_SSP=3
+        ---------
+
+                k_SSP=1
+                k_SSP=2
+                k_SSP=3
+        j_SSP=4
+        ---------
+
+                k_SSP=1
+                k_SSP=2
+                k_SSP=3
+        j_SSP=5
+        ---------
+
+                k_SSP=1
+                k_SSP=2
+                k_SSP=3
+
+
+i=9
+-----------
+
+        j_SSP=1
+        ---------
+
+                k_SSP=1
+                k_SSP=2
+                k_SSP=3
+        j_SSP=2
+        ---------
+
+                k_SSP=1
+                k_SSP=2
+                k_SSP=3
+        j_SSP=3
+        ---------
+
+                k_SSP=1
+                k_SSP=2
+                k_SSP=3
+        j_SSP=4
+        ---------
+
+                k_SSP=1
+                k_SSP=2
+                k_SSP=3
+        j_SSP=5
+        ---------
+
+                k_SSP=1
+                k_SSP=2
+                k_SSP=3
+
+
+i=10
+-----------
+
+        j_SSP=1
+        ---------
+
+                k_SSP=1
+                k_SSP=2
+                k_SSP=3
+        j_SSP=2
+        ---------
+
+                k_SSP=1
+                k_SSP=2
+                k_SSP=3
+        j_SSP=3
+        ---------
+
+                k_SSP=1
+                k_SSP=2
+                k_SSP=3
+        j_SSP=4
+        ---------
+
+                k_SSP=1
+                k_SSP=2
+                k_SSP=3
+        j_SSP=5
+        ---------
+
+                k_SSP=1
+                k_SSP=2
+                k_SSP=3
+*/

@@ -8,3 +8,6 @@ int main(int argc)
     printf("Hello World !!!\n");    //Library Function
     printf("Number of  command Line Argumrnts =%d\n\n",argc);
 }
+/*Hello World !!!
+Number of  command Line Argumrnts =1
+*/

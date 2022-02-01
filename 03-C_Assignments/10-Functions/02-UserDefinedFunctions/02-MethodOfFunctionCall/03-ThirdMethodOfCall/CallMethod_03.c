@@ -83,3 +83,20 @@ void Function_My(void) //function definition
     printf("\n\n");
     printf("My");
 }
+/*
+My
+
+Name
+
+Is
+
+Sanket
+
+Sunil
+
+Pawar
+
+Of ASTROMEDICOMP
+
+I live In India.
+*/

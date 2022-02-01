@@ -36,3 +36,12 @@ int MyAddition(void)   //function definition
 
     return(sum_SSP);
 }
+/*
+Enter Integer Value For 'A' : 29
+
+
+Enter Integer Value For 'B' : 34
+
+
+Sum = 63
+*/

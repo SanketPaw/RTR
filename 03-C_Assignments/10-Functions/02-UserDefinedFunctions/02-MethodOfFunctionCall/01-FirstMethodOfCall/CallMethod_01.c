@@ -95,3 +95,35 @@ void MyMultiplication(int a_SSP, int b_SSP) //function definition
         division_quotient_SSP = b_SSP / a_SSP;
     return(division_quotient_SSP);
 }
+/*
+Enter Integer Value For 'A' For Addition : 21
+
+
+Enter Integer Value For 'B' For Addition : '35
+
+
+Sum Of 21 And 4199136 = 4199157
+
+
+
+Enter Integer Value For 'A' For Subtraction :
+
+Enter Integer Value For 'B' For Subtraction :
+
+Subtraction Yields Result = -4199115
+
+
+Enter Integer Value For 'A' For Multiplication :
+
+Enter Integer Value For 'B' For Multiplication :
+
+Multiplication Of 13119288 And 4201440 = -1708902144
+
+
+
+Enter Integer Value For 'A' For Division :
+
+Enter Integer Value For 'B' For Division :
+
+Division Of 4201531 and 6422356 Gives = 1 (Quotient)
+*/

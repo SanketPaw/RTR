@@ -35,3 +35,12 @@ int MyAddition(int a_SSP,int b_SSP)   //function definition
     sum_SSP=a_SSP+b_SSP;
    return(sum_SSP);
 }
+/*
+Enter Integer Value For 'A' : 23
+
+
+Enter Integer Value For 'B' : 12
+
+
+Sum Of 23 and 12 = 35
+*/

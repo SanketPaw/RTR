@@ -35,3 +35,4 @@ int MyAddition(int a_SSP,int b_SSP) //function definition
     sum_SSP=a_SSP+b_SSP;
     return(sum_SSP);
 }
+// 10+20+30+40

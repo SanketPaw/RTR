@@ -19,3 +19,11 @@ int main(int argc,char*argv[])
     printf("\n\n");
     return 0;
 }
+/*
+Hello World !!!
+Number of  command Line Argumrnts =1
+
+Command line Arguments Passed To this Program Are :
+
+Command Line Argument Number 1 = C:\MyProject\RTR\03-C_Assignments\10-Functions\01-EntryPointFunctions\04_Type_04\EntryPointFunction.exe
+*/

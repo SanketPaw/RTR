@@ -39,3 +39,57 @@ int main(void)
     }
     return 0;
 }
+/*
+Outer Loops prints Odd number between 1 to 10. 
+
+Inner Loop prints Even Number Between 1 to 10 For Every Odd Number Printed by Outer Loop.
+
+i_SSP=1
+-------------------
+        j_SSP=0
+        j_SSP=2
+        j_SSP=4
+        j_SSP=6
+        j_SSP=8
+        j_SSP=10
+
+
+i_SSP=3
+-------------------
+        j_SSP=0
+        j_SSP=2
+        j_SSP=4
+        j_SSP=6
+        j_SSP=8
+        j_SSP=10
+
+
+i_SSP=5
+-------------------
+        j_SSP=0
+        j_SSP=2
+        j_SSP=4
+        j_SSP=6
+        j_SSP=8
+        j_SSP=10
+
+
+i_SSP=7
+-------------------
+        j_SSP=0
+        j_SSP=2
+        j_SSP=4
+        j_SSP=6
+        j_SSP=8
+        j_SSP=10
+
+
+i_SSP=9
+-------------------
+        j_SSP=0
+        j_SSP=2
+        j_SSP=4
+        j_SSP=6
+        j_SSP=8
+        j_SSP=10
+*/

@@ -29,3 +29,13 @@ int main(void)
 
     return 0;
 }
+/*
+Printing Even Numbers From 1 to 100 For Every user Input. Exiting the Loop When  User Enters Character 'Q' or 'q' : 
+
+Enter the Character 'Q' or 'q' to exit Loop :
+
+        1
+
+
+EXITING LOOP
+*/

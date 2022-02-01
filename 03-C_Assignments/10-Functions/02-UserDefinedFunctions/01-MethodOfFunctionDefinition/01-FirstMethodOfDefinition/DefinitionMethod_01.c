@@ -31,3 +31,12 @@ void MyAddition(void)   //function definition
     printf("\n\n ");
     printf("Sum Of %d And %d = %d\n\n",a_SSP,b_SSP,sum_SSP);
 }
+/*
+Enter Integer Value For 'A' : 20
+
+
+Enter Integer Value For 'B' : 12
+
+
+ Sum Of 20 And 12 = 32
+ */
