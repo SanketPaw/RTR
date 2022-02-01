@@ -23,3 +23,13 @@ int main(void)
     printf("BYE!!!\n\n");
     return 0;
 }
+/*
+Enter Age: 20
+
+
+Entering the first if block...
+
+You are Eligible for Voting!!!
+
+BYE!!!
+*/

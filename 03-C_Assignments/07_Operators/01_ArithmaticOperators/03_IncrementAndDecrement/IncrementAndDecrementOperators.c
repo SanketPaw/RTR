@@ -19,3 +19,13 @@ int main(void)
 
     return 0;
 }
+/*
+A_SSP=5
+A_SSP=5
+A_SSP=6
+A_SSP=7
+B_SSP=10
+B_SSP=10
+B_SSP=9
+B_SSP=8
+*/

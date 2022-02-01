@@ -104,3 +104,17 @@ int main(void)
 
     return 0;
 }
+/*
+Enter Value For 'A': 20
+Enter Value for 'B': 40
+Enter Option In Character: 
+
+'A' or'a' for addition :
+'S' or 's' for Subtraction :
+'M' or 'm' for Multiplication :
+'D' or 'd' for division :
+
+Enter Option:
+
+Addition Of A =20 And B=40 gives Result =60If-Else-If ladder Complete !!!
+*/

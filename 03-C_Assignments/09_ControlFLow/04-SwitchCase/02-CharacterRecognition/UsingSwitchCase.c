@@ -65,3 +65,10 @@ int main(void)
     printf("Switch Case Block Complete !!!\n\n");
     return 0;
 }
+/*
+Enter Character: 
+
+Character 'S' Entered By You Is A Consonant CHARACTER From The English Alphabet !!!
+
+Switch Case Block Complete !!!
+*/

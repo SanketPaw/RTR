@@ -18,47 +18,47 @@ int main(void)
         printf("Month Number %d Is January !!!\n\n",num_month_SSP);
         break;
         
-    case 3: //like 'else' 'if'
+    case 2: //like 'else' 'if'
         printf("Month Number %d Is February !!!\n\n",num_month_SSP);
         break;
     
-    case 4: //like 'else' 'if'
+    case 3: //like 'else' 'if'
         printf("Month Number %d Is March !!!\n\n",num_month_SSP);
         break;
 
-    case 5: //like 'else' 'if'
+    case 4: //like 'else' 'if'
         printf("Month Number %d Is April !!!\n\n",num_month_SSP);
         break;
     
-    case 6: //like 'else' 'if'
+    case 5: //like 'else' 'if'
         printf("Month Number %d Is May !!!\n\n",num_month_SSP);
         break;
     
-    case 7: //like 'else' 'if'
+    case 6: //like 'else' 'if'
         printf("Month Number %d Is June !!!\n\n",num_month_SSP);
         break;
 
-    case 8: //like 'else' 'if'
+    case 7: //like 'else' 'if'
         printf("Month Number %d Is July !!!\n\n",num_month_SSP);
         break;
     
-    case 9: //like 'else' 'if'
+    case 8: //like 'else' 'if'
         printf("Month Number %d Is August !!!\n\n",num_month_SSP);
         break;
 
-    case 10: //like 'else' 'if'
-        printf("Month Number %d Is September !!!\n\n",num_month);
+    case 9: //like 'else' 'if'
+        printf("Month Number %d Is September !!!\n\n",num_month_SSP);
         break;
     
-    case 11: //like 'else' 'if'
+    case 10: //like 'else' 'if'
         printf("Month Number %d Is October !!!\n\n",num_month_SSP);
         break;
     
-    case 12: //like 'else' 'if'
+    case 11: //like 'else' 'if'
         printf("Month Number %d Is November !!!\n\n",num_month_SSP);
         break;
     
-    case 2: //like 'else' 'if'
+    case 12: //like 'else' 'if'
         printf("Month Number %d Is December !!!\n\n",num_month_SSP);
         break;
     
@@ -71,3 +71,11 @@ int main(void)
 
     return 0;
 }
+/*
+Enter the Number Of Month (1 to 12) : 6
+
+
+Month Number 6 Is June !!!
+
+Switch Case Block Complete
+*/

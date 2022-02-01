@@ -116,3 +116,24 @@ int main(void)
 
     return 0;
 }
+/*
+Enter Value For 'A': 12
+Enter Value for 'B': 34
+Enter Option In Character: 
+
+'A' or'a' for addition :
+'S' or 's' for Subtraction :
+'M' or 'm' for Multiplication :
+'D' or 'd' for division :
+
+Enter Option:
+
+'Q' or 'q' or '/' For Quotient Upon Division: 
+'R' or 'r' or '%' For remainder upon division:
+Enter Option:
+
+Division Of B=34 By A=12 Gives Quotient =2 !!!
+Ivalid Character Entered !!! Please try again...
+
+Switch Case Block Complete !!!
+*/

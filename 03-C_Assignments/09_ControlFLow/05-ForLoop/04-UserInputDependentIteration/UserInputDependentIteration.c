@@ -22,3 +22,20 @@ int main(void)
 
     printf("\n\n");
 }
+/*
+Enter an iteration value from which iteration must begin: 1
+How many digits you want to print from 1 onwards ? : 10
+printing digits 1 to 11 : 
+
+        1
+        2
+        3
+        4
+        5
+        6
+        7
+        8
+        9
+        10
+        11
+*/

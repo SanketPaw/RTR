@@ -40,3 +40,16 @@ int main(void)
 
     return 0;
 }
+/*
+Enter a number : 21
+
+
+Enter another number : 23
+
+
+Addition of a_SSP=21 and b_SSP=23 gives 44.
+Subtraction of a_SSP=21 and b_SSP=23 gives -2.
+Multiplication of a_SSP=21 and b_SSP=23 gives 483.
+Division of a_SSP=21 and b_SSP=23 gives Quotient 0.
+Division of a_SSP=21 and b_SSP=23 gives Remainder 21.
+*/

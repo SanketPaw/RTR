@@ -23,3 +23,8 @@ int main(void)
 
     printf("Both Comparisons Have Been Done!!!\n\n");
 }
+/*
+A_SSP is less than B_SSP!!!
+
+Both Comparisons Have Been Done!!!
+*/

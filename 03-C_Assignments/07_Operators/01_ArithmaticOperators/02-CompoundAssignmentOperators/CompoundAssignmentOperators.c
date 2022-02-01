@@ -54,3 +54,16 @@ int main(void)
 
 	return(0);
 }
+/*
+Enter A Number : 34
+
+
+Enter Another Number : 12
+
+
+Addition Of A = 34 And B = 12 Gives 46.
+Subtraction Of A = 46 And B = 12 Gives 34.
+Multiplication Of A_SSP = 34 And B_SSP = 12 Gives 408.
+Division Of A_SSP = 408 And B_SSP = 12 Gives Quotient 34.
+Division Of A_SSP = 34 And B_SSP = 12 Gives Remainder 10.
+*/

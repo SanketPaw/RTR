@@ -38,3 +38,20 @@ int main(void)
 
     return(0);
 }
+/*
+Enter One Integer : 23
+
+
+Enter Another Integer : 14
+
+
+If Answer = 0, It Is 'FALSE'.
+If Answer = 1, It Is 'TRUE'.
+
+(a_SSP < b_SSP) A_SSP = 23 Is Less Than B_SSP = 14       Answer = 0
+(a_SSP > b_SSP) A_SSP = 23 Is Greater Than B_SSP = 14    Answer = 1
+(a_SSP <= b_SSP) A_SSP = 23 Is Less Than Or Equal To B_SSP = 14          Answer = 0
+(a_SSP >= b_SSP) A_SSP = 23 Is Greater Than Or Equal To B_SSP = 14       Answer = 1
+(a_SSP == b_SSP) A_SSP = 23 Is Equal To B_SSP = 14       Answer = 0
+(a_SSP != b_SSP) A_SSP = 23 Is NOT Equal To B_SSP = 14   Answer = 1
+*/

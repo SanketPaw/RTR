@@ -26,3 +26,13 @@ int main(void)
 
     return 0;
 }
+/*
+Enter 'Y' or 'y' to initiate user controlled Infinite Loop:
+
+In Loop...
+In Loop...
+In Loop...
+
+
+Exiting user Controlled Infinite Loop...
+*/

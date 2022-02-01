@@ -17,3 +17,22 @@ int main(void)
 	printf("Demonstrating \102 Using \\ooo Escape Sequence\n\n"); //102 Is The Octal Code For Letter 'B'. 'ooo' Is The Place-holder For 3 Digits Forming An Octal Number.
 	return(0);
 }
+/*
+Going On To Next Line...Using \n Escape Sequence
+
+Demonstrating    Horizontal      Tab     Using   \t Escape Sequence !!!
+
+"This Is A Double Quoted Output" Done Using \" \" Escape Sequence
+
+'This Is A Single Quoted Output' Done Using \' \' Escape Sequence
+
+BACKSPACE Turned To BACKSPAC Using Escape Sequence \b
+
+ Demonstrating Carriage Return Using \r Escape Sequence
+ Carriage Return Using \r Escape Sequence
+ Return Using \r Escape Sequence
+
+Demonstrating A Using \xhh Escape Sequence
+
+Demonstrating B Using \ooo Escape Sequence
+*/

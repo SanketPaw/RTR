@@ -41,3 +41,31 @@ int main(void)
     printf("\n\n");
 	return 0;
 }
+/*
+**********************************************************************************************************
+
+hello world !!!
+
+Integer decimal value of 'a' =13
+Integer octal value of 'a' =15
+Integer Hexadecimal value of 'a' (Hexadecimal Letters in lower case)=d
+Integer Hexadicimal value of 'a' (Hexadecimal Letter in Upper case) =D
+Character ch_SSP=A
+string str_SSP=AstroMediComp's Real Time Rendering batch
+
+Long Integer=30121995
+
+Unsigned Integer 'b' 7
+
+Floatinng point number with just %f 'f_num_SSP'=3012.199463
+Floatinng point number with %4.2f 'f_num_SSP'=3012.20
+Floatinng point number with %6.5f 'f_num_SSP'=3012.19946
+Double Precision Floating Point Number Without Exponential = 3.14159
+Double Precision Floating Point Number With Exponential (Lower Case) = 3.141593e+000
+Double Precision Floating Point Number With Exponential (Upper Case) = 3.141593E+000
+
+Double Hexadecimal Value Of 'd_pi_SSP' (Hexadecimal Letters In Lower Case) = 0x1.921fb5p+1
+Double Hexadecimal Value Of 'd_pi-SSP' (Hexadecimal Letters In Upper Case) = 0X1.921FB5P+1
+
+**************************************************************************************
+*/

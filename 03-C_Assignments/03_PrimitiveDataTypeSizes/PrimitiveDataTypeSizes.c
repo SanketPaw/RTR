@@ -18,3 +18,12 @@ int main(void)
     printf("\n\n");
     return 0;
 }
+/*
+size of 'int'                   =4 bytes
+size of 'unsigned int'          =4 bytes
+size of 'long'                  =4 bytes
+size of 'long long'             =8 bytes
+size of 'float'                 =4 bytes
+size of 'double'                =8 bytes
+size of 'long double'           =12 bytes
+*/

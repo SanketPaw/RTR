@@ -113,3 +113,48 @@ int main (void)
 
     return 0;
 }
+/*
+Local constant epsilon_SSP=0.000001
+
+Sunday_SSP is day number = 0
+Monday_SSP is day number = 1
+Tuesday_SSP is day number = 2
+Wednesday_SSP is day number = 3
+Thursday_SSP is day number = 4
+Friday_SSP is day number = 5
+Saturday_SSP is day number = 6
+One_SSP enum Number = 0
+Two_SSP enum Number = 1
+Three_SSP enum Number = 2
+Four_SSP enum Number = 3
+Five_SSP enum Number = 4
+Six_SSP enum Number = 5
+Seven_SSP enum Number = 6
+Eight_SSP enum Number = 7
+Nine_SSP enum Number = 8
+Ten_SSP enum Number = 9
+January_SSP is month number = 1
+February_SSP is month number = 2
+March_SSP is month number = 3
+April_SSP is month number = 4
+May_SSP is month number = 5
+June_SSP is month number = 6
+July_SSP is month number = 7
+August_SSP is month number = 8
+September_SSP is month number = 9
+Octobe_SSP is month number = 10
+November_SSP is month number = 11
+December_SSP is month number = 12
+value of TRUE = 1
+value of FALSE = 0
+
+MY_PI macro Value =0.0000010000
+
+,MY_PIArea Of Circle Of Radius 2 units = 12.566371
+
+
+
+AstroMediComp RTR
+
+AMC_STRING is : AstroMediComp RTR
+*/

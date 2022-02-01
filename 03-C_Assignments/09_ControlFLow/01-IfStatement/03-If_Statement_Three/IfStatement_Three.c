@@ -47,3 +47,8 @@ int main(void)
 
     return 0;
 }
+/*
+Enter the value for num_SSP: 
+20
+Num = 20 Is Between 0 and 100.
+*/

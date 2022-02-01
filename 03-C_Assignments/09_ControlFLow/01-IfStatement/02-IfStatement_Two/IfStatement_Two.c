@@ -14,3 +14,7 @@ int main(void)
     }
     return 0;
 }
+/*
+Enter Age: 23
+You are Eligible for Voting!!!
+*/

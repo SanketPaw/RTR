@@ -16,3 +16,9 @@ int main(void)
     return 0;
 }
 
+/*
+Enter Age:20
+you  are eligible for voting!!!
+
+You are not eligible for Voting!!!
+*/

@@ -29,3 +29,10 @@ int main(void)
     
     return 0;
 }
+/*
+if block 1 : 'A' Exists and has value = 5!!!
+
+if block 2 : 'A' Exists and has value = -5!!!
+
+All three Statementds are done!!!
+*/

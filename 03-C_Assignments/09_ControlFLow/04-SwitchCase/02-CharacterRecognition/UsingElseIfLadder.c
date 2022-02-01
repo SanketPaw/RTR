@@ -49,3 +49,8 @@ int main(void)
     }
     return 0;
 }
+/*
+Enter Character: 
+
+Character 'A' Entered By You Is A VOWEL CHARACTER From The English Alphabet !!!
+*/

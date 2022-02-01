@@ -15,7 +15,7 @@ int main(void)
     ch_01_SSP = i_SSP;
     printf("I_SSP = %d\n", i_SSP);
     printf("Charater 1 (after ch_01_SSP = i_SSP) = %c\n\n", ch_01_SSP);
-    ch_02_SSP = 'Q_SSP';
+    ch_02_SSP = 'Q';
     j_SSP = ch_02_SSP;
     printf("Charater 2 = %c\n", ch_02_SSP);
     printf("J_SSP (after j = ch_02_SSP) = %d\n\n", j_SSP);
@@ -34,3 +34,17 @@ int main(void)
 
     return(0);
 }
+/*
+I_SSP = 70
+Charater 1 (after ch_01_SSP = i_SSP) = F
+
+Charater 2 = P
+J_SSP (after j = ch_02_SSP) = 80
+
+Integer a_SSP = 5 And Floating-Point Number 7.800000 Added Gives Floating-Point Sum = 12.800000
+
+Integer a_SSP = 5 And Floating-Point Number 7.800000 Added Gives Integer Sum_SSP = 12
+
+Floating Point Number Which Will Be Type Casted Explicitly = 30.121996
+Resultant Integer After Explicit Type Casting Of 30.121996 = 30
+*/
