@@ -52,3 +52,45 @@ int main(void)
     printf("\n\n");
     return(0);
 }
+/*
+Size Of Two Dimensional ( 2D ) Integer Array Is = 60
+
+Number of Rows In Two Dimensional ( 2D ) Integer Array Is = 5
+
+Number of Columns In Two Dimensional ( 2D ) Integer Array Is = 3
+
+Number of Elements In Two Dimensional ( 2D ) Integer Array Is = 15
+
+
+
+Elements In The 2D Array : 
+
+****** ROW 1 ******
+iArray[0][0] = 1
+iArray[0][1] = 2
+iArray[0][2] = 3
+
+
+****** ROW 2 ******
+iArray[1][0] = 2
+iArray[1][1] = 4
+iArray[1][2] = 6
+
+
+****** ROW 3 ******
+iArray[2][0] = 3
+iArray[2][1] = 6
+iArray[2][2] = 9
+
+
+****** ROW 4 ******
+iArray[3][0] = 4
+iArray[3][1] = 8
+iArray[3][2] = 12
+
+
+****** ROW 5 ******
+iArray[4][0] = 5
+iArray[4][1] = 10
+iArray[4][2] = 15
+*/

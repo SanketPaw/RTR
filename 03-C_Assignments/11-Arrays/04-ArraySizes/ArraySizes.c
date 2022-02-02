@@ -43,3 +43,22 @@ int main(void)
     printf("\n\n");
     return(0);
 }
+/*
+Size of 1-D integer array iArray_One = 20
+Number of elements in 1-D integer array iArray_One = 5
+
+
+Size of 2-D integer array iArray_Two = 60
+Number rows in 2-D integer array iArray_Two = 5
+Number of elements (columns) in each row in 2-D integer array iArray_Two = 3
+Number of elements in total in 2-D Array iArray_Two = 15
+
+
+
+
+Size of 3-D integer array iArray_Three = 200000
+Number rows in 3-D integer array iArray_Three = 100
+Number of elements (columns) in one row in 3-D integer array iArray_Three = 100
+Number of elements (depth) in one column in one row in 3-D integer array iArray_Three = 5
+Number of elements in total in 3-D Array iArray_Three = 50000
+*/

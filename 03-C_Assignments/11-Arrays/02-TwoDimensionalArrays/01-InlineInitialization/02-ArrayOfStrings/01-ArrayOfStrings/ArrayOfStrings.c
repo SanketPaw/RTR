@@ -64,3 +64,21 @@ int MyStrlen(char str[])
     }
     return(string_length_SSP);
 }
+/*
+Size Of Two Dimensional ( 2D ) Character Array (String Array) Is = 150
+
+Number of Rows (Strings) In Two Dimensional ( 2D ) Character Array (String Array) Is = 10
+
+Number of Columns In Two Dimensional ( 2D ) Character Array (String Array) Is = 15
+
+Maximum Number of Elements (Characters) In Two Dimensional ( 2D ) Character Array (String Array) Is = 150
+
+Actual Number of Elements (Characters) In Two Dimensional ( 2D ) Character Array (String Array) Is = 62
+
+
+
+Strings In The 2D Array :
+
+Hello! Welcome To Real Time Rendering Batch (2020-21) Of ASTROMEDICOMP.
+*/
+

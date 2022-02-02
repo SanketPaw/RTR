@@ -69,3 +69,18 @@ int MyStrlen(char str[])
     //code
     // *** DETERMINING EXACT LENGTH OF THE STRING, BY DETECTING THE FIRST OCCURENCE OF NULL-TERMINATING CHARACTER ( \0 ) **
 }
+/*
+Size Of Two Dimensional ( 2D ) Character Array (String Array) Is = 50
+
+Number of Rows (Strings) In Two Dimensional ( 2D ) Character Array (String Array) Is = 5
+
+Number of Columns In Two Dimensional ( 2D ) Character Array (String Array) Is = 10
+
+Maximum Number of Elements (Characters) In Two Dimensional ( 2D ) Character Array (String Array) Is = 50
+
+
+
+The Strings In the 2D Character Array Are :
+
+My Name Is Sanket Pawar
+*/

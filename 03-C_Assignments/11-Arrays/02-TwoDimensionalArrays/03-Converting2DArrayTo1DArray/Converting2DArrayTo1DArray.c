@@ -54,3 +54,60 @@ int main(void)
     printf("\n\n");
     return(0);
 }
+/*
+For ROW NUMBER 1 : 
+Enter Element Number 1 :
+1
+Enter Element Number 2 : 
+2
+Enter Element Number 3 : 
+3
+
+
+For ROW NUMBER 2 :
+Enter Element Number 1 :
+4
+Enter Element Number 2 : 
+5
+Enter Element Number 3 : 
+6
+
+
+For ROW NUMBER 3 :
+Enter Element Number 1 :
+7
+Enter Element Number 2 : 
+8
+Enter Element Number 3 : 
+9
+
+
+For ROW NUMBER 4 :
+Enter Element Number 1 :
+0
+Enter Element Number 2 : 
+1
+Enter Element Number 3 : 
+2
+
+
+For ROW NUMBER 5 :
+Enter Element Number 1 :
+3
+Enter Element Number 2 : 
+4
+Enter Element Number 3 : 
+5
+
+
+
+iArray_1D[6] = 7
+iArray_1D[7] = 8
+iArray_1D[8] = 9
+iArray_1D[9] = 0
+iArray_1D[10] = 1
+iArray_1D[11] = 2
+iArray_1D[12] = 3
+iArray_1D[13] = 4
+iArray_1D[14] = 5
+*/

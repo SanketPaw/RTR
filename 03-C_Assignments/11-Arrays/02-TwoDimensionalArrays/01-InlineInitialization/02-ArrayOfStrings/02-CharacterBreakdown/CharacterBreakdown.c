@@ -57,3 +57,111 @@ int MyStrlen(char str[])
     }
     return(string_length_SSP);
 }
+/*
+The Entire String Array : 
+
+Hello! Welcome To Real Time Rendering Batch (2020-21) Of ASTROMEDICOMP.
+
+Strings In The 2D Array :
+
+String Number 1 => Hello!
+
+Character 1 = H
+Character 2 = e
+Character 3 = l
+Character 4 = l
+Character 5 = o
+Character 6 = !
+
+
+String Number 2 => Welcome
+
+Character 1 = W
+Character 2 = e
+Character 3 = l
+Character 4 = c
+Character 5 = o
+Character 6 = m
+Character 7 = e
+
+
+String Number 3 => To
+
+Character 1 = T
+Character 2 = o
+
+
+String Number 4 => Real
+
+Character 1 = R
+Character 2 = e
+Character 3 = a
+Character 4 = l
+
+
+String Number 5 => Time
+
+Character 1 = T
+Character 2 = i
+Character 3 = m
+Character 4 = e
+
+
+String Number 6 => Rendering
+
+Character 1 = R
+Character 2 = e
+Character 3 = n
+Character 4 = d
+Character 5 = e
+Character 6 = r
+Character 7 = i
+Character 8 = n
+Character 9 = g
+
+
+String Number 7 => Batch
+
+Character 1 = B
+Character 2 = a
+Character 3 = t
+Character 4 = c
+Character 5 = h
+
+
+String Number 8 => (2020-21)
+
+Character 1 = (
+Character 2 = 2
+Character 3 = 0
+Character 4 = 2
+Character 5 = 0
+Character 6 = -
+Character 7 = 2
+Character 8 = 1
+Character 9 = )
+
+
+String Number 9 => Of
+
+Character 1 = O
+Character 2 = f
+
+
+String Number 10 => ASTROMEDICOMP.
+
+Character 1 = A
+Character 2 = S
+Character 3 = T
+Character 4 = R
+Character 5 = O
+Character 6 = M
+Character 7 = E
+Character 8 = D
+Character 9 = I
+Character 10 = C
+Character 11 = O
+Character 12 = M
+Character 13 = P
+Character 14 = .
+*/

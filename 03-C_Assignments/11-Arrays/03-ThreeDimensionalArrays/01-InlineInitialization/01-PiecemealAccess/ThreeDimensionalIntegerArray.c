@@ -105,3 +105,87 @@ int main(void)
     printf("\n\n");
     return(0);
 }
+/*
+Size Of Three Dimensional ( 3D ) Integer Array Is = 120
+
+Number of Rows (Width) In Three Dimensional ( 3D ) Integer Array Is = 5
+
+Number of Columns (Height) In Three Dimensional ( 3D ) Integer Array Is = 3
+
+Depth In Three Dimensional ( 3D ) Integer Array Is = 2
+
+Number of Elements In Three Dimensional ( 3D ) Integer Array Is = 30
+
+
+
+Elements In Integer 3D Array :
+
+****** ROW 1 ******
+****** COLUMN 1 ******
+iArray[0][0][0] = 9
+iArray[0][0][1] = 18
+
+****** COLUMN 2 ******
+iArray[0][1][0] = 27
+iArray[0][1][1] = 36
+
+****** COLUMN 3 ******
+iArray[0][2][0] = 45
+iArray[0][2][1] = 54
+
+
+****** ROW 2 ******
+****** COLUMN 1 ******
+iArray[1][0][0] = 8
+iArray[1][0][1] = 16
+
+****** COLUMN 2 ******
+iArray[1][1][0] = 24
+iArray[1][1][1] = 32
+
+****** COLUMN 3 ******
+iArray[1][2][0] = 40
+iArray[1][2][1] = 48
+
+
+****** ROW 3 ******
+****** COLUMN 1 ******
+iArray[2][0][0] = 7
+iArray[2][0][1] = 14
+
+****** COLUMN 2 ******
+iArray[2][1][0] = 21
+iArray[2][1][1] = 28
+
+****** COLUMN 3 ******
+iArray[2][2][0] = 35
+iArray[2][2][1] = 42
+
+
+****** ROW 4 ******
+****** COLUMN 1 ******
+iArray[3][0][0] = 6
+iArray[3][0][1] = 12
+
+****** COLUMN 2 ******
+iArray[3][1][0] = 18
+iArray[3][1][1] = 24
+
+****** COLUMN 3 ******
+iArray[3][2][0] = 30
+iArray[3][2][1] = 36
+
+
+****** ROW 5 ******
+****** COLUMN 1 ******
+iArray[4][0][0] = 5
+iArray[4][0][1] = 10
+
+****** COLUMN 2 ******
+iArray[4][1][0] = 15
+iArray[4][1][1] = 20
+
+****** COLUMN 3 ******
+iArray[4][2][0] = 25
+iArray[4][2][1] = 30
+*/
