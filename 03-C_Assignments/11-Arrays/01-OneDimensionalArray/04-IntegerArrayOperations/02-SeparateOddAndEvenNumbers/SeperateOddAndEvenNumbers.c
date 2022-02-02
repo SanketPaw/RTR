@@ -32,3 +32,36 @@ int main(void)
     }
     return(0);
 }
+/*
+Enter Integer Elememts For Array : 
+
+1
+2
+3
+4
+5
+6
+78
+9
+
+10
+1
+
+
+Even Numbers Amongst The Array Elements Are :
+
+2
+4
+6
+78
+10
+
+
+Odd Numbers Amongst The Array Elements Are :
+
+1
+3
+5
+9
+1
+*/

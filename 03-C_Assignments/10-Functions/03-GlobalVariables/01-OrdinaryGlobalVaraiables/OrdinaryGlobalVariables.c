@@ -49,4 +49,9 @@ void change_count_three(void)
     printf("change_count_three() : Value of global_count = %d\n",global_count_SSP);
 }
 
-//global scope
+/*
+main() : Valueof global_count = 0
+change_count_one() : Value of global_count = 100
+change_count_two() : Value of global_count = 101
+change_count_three() : Value of global_count = 111
+*/

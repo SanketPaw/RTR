@@ -63,3 +63,20 @@ int MyStrlen(char str[])
     }
     return(string_length_SSP);
 }
+/*
+Enter A String : 
+
+SANKET
+
+
+String Entered By You Is :
+
+SANKET
+
+
+
+String After Capitalizing First Letter Of Every Word :
+
+SANKET
+
+*/

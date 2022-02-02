@@ -85,3 +85,19 @@ void MyStrcpy(char str_destination[], char str_source[])
     str_destination[j_SSP] = str_source[j_SSP];
     str_destination[j_SSP] = '\0';
 }
+/*
+Enter A String : 
+
+SANKET
+
+
+String Entered By You Is :
+
+SANKET
+
+
+
+String After Replacement Of Vowels By * Is :
+
+S*NK*T
+*/

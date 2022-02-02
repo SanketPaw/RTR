@@ -77,3 +77,62 @@ int main(void)
     printf("Size Of Array 'cArray[]' (%d Elements * %d Bytes) = %d Bytes\n\n", cArray_num_elements_SSP, char_size_SSP, cArray_size_SSP);
     return(0);
 }
+/*
+In-line Initialization And Piece-meal Display Of Elements of Array 'iArray[]': 
+
+iArray[0] (1st Element) = 9
+iArray[1] (2nd Element) = 30
+iArray[2] (3rd Element) = 6
+iArray[3] (4th Element) = 12
+iArray[4] (5th Element) = 98
+iArray[5] (6th Element) = 95
+iArray[6] (7th Element) = 20
+iArray[7] (8th Element) = 23
+iArray[8] (9th Element) = 2
+iArray[9] (10th Element) = 45
+
+Size Of Data type 'int' = 4 bytes
+Number Of Elements In 'int' Array 'iArray[]' = 10 Elements
+Size Of Array 'iArray[]' (10 Elements * 4 Bytes) = 40 Bytes
+
+
+
+In-line Initialization And Piece-meal Display Of Elements of Array 'fArray[]':
+
+fArray[0] (1st Element) = 1.200000
+fArray[1] (2nd Element) = 2.300000
+fArray[2] (3rd Element) = 3.400000
+fArray[3] (4th Element) = 4.500000
+fArray[4] (5th Element) = 5.600000
+fArray[5] (6th Element) = 6.700000
+fArray[6] (7th Element) = 7.800000
+fArray[7] (8th Element) = 8.900000
+fArray[8] (9th Element) = 0.000000
+fArray[9] (10th Element) = 0.000000
+
+Size Of Data type 'float' = 4 bytes
+Number Of Elements In 'float' Array 'fArray[]' = 8 Elements
+Size Of Array 'fArray[]' (8 Elements * 4 Bytes) = 32 Bytes
+
+
+
+In-line Initialization And Piece-meal Display Of Elements of Array 'cArray[]':
+
+cArray[0] (1st Element) = A
+cArray[1] (2nd Element) = S
+cArray[2] (3rd Element) = T
+cArray[3] (4th Element) = R
+cArray[4] (5th Element) = O
+cArray[5] (6th Element) = M
+cArray[6] (7th Element) = E
+cArray[7] (8th Element) = D
+cArray[8] (9th Element) = I
+cArray[9] (10th Element) = C
+cArray[10] (11th Element) = O
+cArray[11] (12th Element) = M
+cArray[12] (13th Element) = P
+
+Size Of Data type 'char' = 1 bytes
+Number Of Elements In 'char' Array 'cArray[]' = 13 Elements
+Size Of Array 'cArray[]' (13 Elements * 1 Bytes) = 13 Bytes
+*/

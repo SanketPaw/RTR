@@ -57,3 +57,19 @@ int MyStrlen(char str[])
     }
     return(string_length_SSP);
 }
+/*
+Enter A String : 
+
+SANKET
+
+
+String Entered By You Is :
+
+SANKET
+
+
+
+String After Removal Of Spaces Is :
+
+SANKET
+*/

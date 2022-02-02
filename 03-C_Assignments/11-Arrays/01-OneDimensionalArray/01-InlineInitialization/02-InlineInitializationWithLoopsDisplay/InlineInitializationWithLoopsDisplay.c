@@ -64,3 +64,54 @@ int main(void)
     printf("Size Of Array 'cArray[]' (%d Elements * %d Bytes) = %d Bytes\n\n", cArray_num_elements_SSP, char_size_SSP, cArray_size_SSP);
     return(0);
 }
+/*
+n-line Initialization And Loop (for) Display Of Elements of Array 'iArray[]': 
+
+iArray[0] (Element 1) = 9
+
+
+Size Of Data type 'int' = 4 bytes
+Number Of Elements In 'int' Array 'iArray[]' = 1 Elements
+Size Of Array 'iArray[]' (1 Elements * 4 Bytes) = 4 Bytes
+
+
+
+In-line Initialization And Loop (while) Display Of Elements of Array'fArray[]':
+
+fArray[0] (Element 1) = 1.200000
+fArray[1] (Element 2) = 2.300000
+fArray[2] (Element 3) = 3.400000
+fArray[3] (Element 4) = 4.500000
+fArray[4] (Element 5) = 5.600000
+fArray[5] (Element 6) = 6.700000
+fArray[6] (Element 7) = 7.800000
+fArray[7] (Element 8) = 8.900000
+
+
+Size Of Data type 'float' = 4 bytes
+Number Of Elements In 'float' Array 'fArray[]' = 8 Elements
+Size Of Array 'fArray[]' (8 Elements * 4 Bytes) = 32 Bytes
+
+
+
+In-line Initialization And Loop (do while) Display Of Elements of Array 'cArray[]':
+
+cArray[0] (Element 1) = A
+cArray[1] (Element 2) = S
+cArray[2] (Element 3) = T
+cArray[3] (Element 4) = R
+cArray[4] (Element 5) = O
+cArray[5] (Element 6) = M
+cArray[6] (Element 7) = E
+cArray[7] (Element 8) = D
+cArray[8] (Element 9) = I
+cArray[9] (Element 10) = C
+cArray[10] (Element 11) = O
+cArray[11] (Element 12) = M
+cArray[12] (Element 13) = P
+
+
+Size Of Data type 'char' = 1 bytes
+Number Of Elements In 'char' Array 'cArray[]' = 13 Elements
+Size Of Array 'cArray[]' (13 Elements * 1 Bytes) = 13 Bytes
+*/

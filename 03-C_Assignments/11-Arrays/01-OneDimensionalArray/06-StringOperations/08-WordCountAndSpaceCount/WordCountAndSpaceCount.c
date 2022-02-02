@@ -59,3 +59,19 @@ int MyStrlen(char str[])
     }
     return(string_length);
 }
+/*
+Enter A String : 
+
+SANKET
+
+
+String Entered By You Is :
+
+SANKET
+
+
+
+Number Of Spaces In The Input String = 0
+
+Number Of Words In The Input String = 1
+*/

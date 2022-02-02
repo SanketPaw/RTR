@@ -15,3 +15,13 @@ int main(void)
     printf("%s\n", chArray_SSP);
     return(0);
 }
+/*
+Enter A String : 
+
+SANKET
+
+
+String Entered By You Is :
+
+SANKET
+*/

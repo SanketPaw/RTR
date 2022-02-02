@@ -46,3 +46,31 @@ int main(int argc,char*agv[],char*envp[])
 
     return 0;
 }
+/*
+Enter An integer Number : 
+
+25
+
+
+Enter Another integer Number :
+
+20
+
+
+Result Of Macro Function MAX_FUNCTION() = 25
+
+
+
+
+Enter a floating point number :
+
+1.3
+
+
+Enter Another Floating Number :
+
+1.56
+
+
+Result Of Macro Function MAX_FUNCTION() = -1073741824
+*/

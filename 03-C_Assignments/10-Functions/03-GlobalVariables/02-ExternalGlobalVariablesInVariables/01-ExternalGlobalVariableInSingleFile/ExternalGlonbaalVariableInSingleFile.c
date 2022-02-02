@@ -25,3 +25,8 @@ void change_count(void)
     global_count_SSP=5;
     printf("value Of Global_count in change_count = %d\n",global_count_SSP);
 }
+/*
+Value of global_count before change_count() = 0
+value Of Global_count in change_count = 5
+Value Of global_count after change-count() = 5
+*/

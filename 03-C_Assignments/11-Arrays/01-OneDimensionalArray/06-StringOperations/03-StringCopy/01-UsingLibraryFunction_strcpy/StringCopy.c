@@ -22,3 +22,19 @@ int main(void)
     printf("%s\n", chArray_Copy);
     return(0);
 }
+/*
+Enter A String : 
+
+SANKET
+
+
+The Original String Entered By You (i.e : 'chArray_Original[]') Is :
+
+SANKET
+
+
+
+The Copied String (i.e : 'chArray_Copy[]') Is :
+
+SANKET
+*/

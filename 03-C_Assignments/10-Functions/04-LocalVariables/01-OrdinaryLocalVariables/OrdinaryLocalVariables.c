@@ -30,3 +30,10 @@ void change_count(void)
     local_count_SSP=local_count_SSP+1;
     printf("local_count =%d\n",local_count_SSP);
 }
+/*
+A = 5
+
+local_count =1
+local_count =1
+local_count =1
+*/

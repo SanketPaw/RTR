@@ -27,3 +27,35 @@ int main(void)
     printf("chArray_WithoutNullTerminator : %s\n\n", chArray_WithoutNullTerminator); //Will display garbage value at the end of string due to absence of \0
     return(0);
 }
+/*
+Size Of chArray_01 : 14
+
+Size Of chArray_02 : 9
+
+Size Of chArray_03 : 4
+
+Size Of chArray_04 : 3
+
+Size Of chArray_05 : 37
+
+
+
+The Strings Are :
+
+chArray_01 : ASTROMEDICOMP
+
+chArray_02 : WELCOMES
+
+chArray_03 : YOU
+
+chArray_04 : To
+
+chArray_05 : REAL TIME RENDERING BATCH OF 2020-21
+
+
+
+Size Of chArray_WithoutNullTerminator : 5
+
+chArray_WithoutNullTerminator : HelloREAL TIME RENDERING BATCH OF 2020-21
+
+*/

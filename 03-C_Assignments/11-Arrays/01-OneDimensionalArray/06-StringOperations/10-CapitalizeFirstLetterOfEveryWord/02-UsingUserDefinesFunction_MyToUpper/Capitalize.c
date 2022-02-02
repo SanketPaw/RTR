@@ -98,3 +98,19 @@ char MyToUpper(char ch)
     else
     return(ch);
 }
+/*
+Enter A String : 
+
+Sanket
+
+
+String Entered By You Is :
+
+Sanket
+
+
+
+String After Capitalizing First Letter Of Every Word :
+
+Sanket
+*/

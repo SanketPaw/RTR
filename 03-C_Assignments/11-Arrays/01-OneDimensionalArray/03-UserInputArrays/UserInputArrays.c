@@ -45,3 +45,70 @@ int main(void)
     printf("%c\n", cArray_SSP[i_SSP]);
     return(0);
 }
+/*
+Enter Elements For 'Integer' Array : 
+1
+2
+3
+4
+5
+
+
+Enter Elements For 'Floating-Point' Array : 
+1.1
+1.2
+1.3
+
+
+Enter Elements For 'Character' Array : 
+c
+h
+a
+r
+a
+c
+t
+e
+r
+a
+r
+r
+a
+y
+s
+
+
+Integer Array Entered By You : 
+
+1
+2
+3
+4
+5
+
+
+Floating-Point Array Entered By You :
+
+1.100000
+1.200000
+1.300000
+
+
+Character Array Entered By You :
+
+c
+h
+a
+r
+a
+c
+t
+e
+r
+a
+r
+r
+a
+y
+s
+*\

@@ -83,3 +83,27 @@ int MyStrlen(char str[])
     }
     return(string_length_SSP);
 }
+/*
+Enter A String : 
+
+SANKET
+
+
+String Entered By You Is :
+
+SANKET
+
+
+
+In The String Entered By You, The Vowels And The Number Of Their Occurences Are Are Follows :
+
+'A' Has Occured = 1 Times !!!
+
+'E' Has Occured = 1 Times !!!
+
+'I' Has Occured = 0 Times !!!
+
+'O' Has Occured = 0 Times !!!
+
+'U' Has Occured = 0 Times !!!
+*/

@@ -43,3 +43,39 @@ int main(void)
     }
     return(0);
 }
+/*
+Enter Integer Elememts For Array : 
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+
+
+Array Elements Are :
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+
+
+Prime Numbers Amongst The Array Elements Are :
+
+2
+3
+5
+7
+*/

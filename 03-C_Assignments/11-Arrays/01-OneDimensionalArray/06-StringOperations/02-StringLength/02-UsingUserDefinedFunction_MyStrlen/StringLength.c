@@ -41,3 +41,17 @@ int MyStrlen(char str[])
     }
     return(string_length_SSP);
 }
+/*
+Enter A String : 
+
+SANKET
+
+
+String Entered By You Is :
+
+SANKET
+
+
+
+Length Of String Is = 7 Characters !!!
+*/

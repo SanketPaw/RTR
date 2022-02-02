@@ -23,3 +23,17 @@ int main(void)
     printf("Length Of String Is = %d Characters !!!\n\n", iStringLength_SSP);
     return(0);
 }
+/*
+Enter A String : 
+
+SANKET
+
+
+String Entered By You Is :
+
+SANKET
+
+
+
+Length Of String Is = 7 Characters !!!
+*/

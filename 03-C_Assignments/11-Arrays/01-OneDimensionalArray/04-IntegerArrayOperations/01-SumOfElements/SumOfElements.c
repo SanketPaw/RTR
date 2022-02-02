@@ -21,3 +21,21 @@ int main(void)
     printf("Sum Of ALL Elements Of Array = %d\n\n", sum_SSP);
     return(0);
 }
+/*
+Enter Integer Elememts For Array :
+
+1
+2
+3
+4 
+5
+
+6
+7
+8
+98
+9
+
+
+Sum Of ALL Elements Of Array = 143
+*/

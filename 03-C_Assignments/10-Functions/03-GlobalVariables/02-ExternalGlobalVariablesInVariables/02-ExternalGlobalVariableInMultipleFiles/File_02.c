@@ -1,4 +1,5 @@
 #include<stdio.h>
+void main()
 {
     //code
     extern int global_count_SSP;

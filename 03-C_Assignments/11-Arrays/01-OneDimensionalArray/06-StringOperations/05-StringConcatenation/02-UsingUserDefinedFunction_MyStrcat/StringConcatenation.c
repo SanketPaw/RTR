@@ -80,3 +80,41 @@ int MyStrlen(char str[])
     }
     return(string_length_SSP);
 }
+/*
+Enter First String : 
+
+SANKET
+
+
+Enter Second String :
+
+PAWAR
+
+
+****** BEFORE CONCATENATION ******
+
+The Original First String Entered By You (i.e : 'chArray_One[]') Is :
+
+SANKET
+
+
+
+The Original Second String Entered By You (i.e : 'chArray_Two[]') Is :
+
+PAWAR
+
+
+
+****** AFTER CONCATENATION ******
+
+'chArray_One[]' Is :
+
+SANKET
+PAWAR
+
+
+
+'chArray_Two[]' Is :
+
+PAWAR
+*/
