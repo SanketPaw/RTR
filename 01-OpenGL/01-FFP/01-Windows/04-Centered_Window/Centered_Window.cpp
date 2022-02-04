@@ -66,19 +66,19 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT iMsg, WPARAM wParam, LPARAM lParam)
 	{
 	case WM_CREATE:
 	{
-		int scrWidth, scrHeight;
+		int sspWidth, sspHeight;
 		RECT rect;
 
 		// get screen size
-		scrWidth = GetSystemMetrics(SM_CXSCREEN);
-		scrHeight = GetSystemMetrics(SM_CYSCREEN);
+		sspWidth = GetSystemMetrics(SM_CXSCREEN);
+		sspHeight = GetSystemMetrics(SM_CYSCREEN);
 
 		// get window
 		GetWindowRect(hwnd, &rect);
 
 		//Reset the value in rect
-		rect.left = (scrWidth - rect.right) / 2;
-		rect.top = (scrHeight - rect.bottom) / 2;
+		rect.left = (sspWidth - rect.right) / 2;
+		rect.top = (sspHeight - rect.bottom) / 2;
 
 		// move the window to the specified position
 		SetWindowPos(hwnd, HWND_TOP, rect.left, rect.top, rect.right, rect.bottom, SWP_SHOWWINDOW);
