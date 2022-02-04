@@ -35,7 +35,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLi
 	hwnd = CreateWindow(szAppName,
 		TEXT("Sanket Pawar"),
 		WS_OVERLAPPEDWINDOW,
-		600,200,800,600,
+		CW_USEDEFAULT,
+		CW_USEDEFAULT,
+		CW_USEDEFAULT,
+		CW_USEDEFAULT,
 		NULL,
 		NULL,
 		hInstance,
@@ -61,6 +64,27 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT iMsg, WPARAM wParam, LPARAM lParam)
 {
 	switch (iMsg)
 	{
+	case WM_CREATE:
+	{
+		int scrWidth, scrHeight;
+		RECT rect;
+
+		// get screen size
+		scrWidth = GetSystemMetrics(SM_CXSCREEN);
+		scrHeight = GetSystemMetrics(SM_CYSCREEN);
+
+		// get window
+		GetWindowRect(hwnd, &rect);
+
+		//Reset the value in rect
+		rect.left = (scrWidth - rect.right) / 2;
+		rect.top = (scrHeight - rect.bottom) / 2;
+
+		// move the window to the specified position
+		SetWindowPos(hwnd, HWND_TOP, rect.left, rect.top, rect.right, rect.bottom, SWP_SHOWWINDOW);
+	}
+		break;
+
 	case WM_DESTROY:
 		PostQuitMessage(0);
 		break;
