@@ -65,18 +65,11 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT iMsg, WPARAM wParam, LPARAM lParam)
 	// code 
 	HDC hdc;
 	PAINTSTRUCT ps;
-	static RECT rc;
+	RECT rc;
 	TCHAR szAppName[] = TEXT("Hello World !!!");
 	switch (iMsg)
 	{
-	case WM_CREATE:
-		//GetClientRect(hwnd, &rc);
-		break;	
-
-	case WM_SIZE:
-		GetClientRect(hwnd, &rc);
-		break;
-
+	
 	case WM_PAINT:
 		//GetClientRect(hwnd, &rc);
 		hdc = BeginPaint(hwnd, &ps);

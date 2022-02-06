@@ -65,23 +65,67 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT iMsg, WPARAM wParam, LPARAM lParam)
 	// code 
 	HDC hdc;
 	PAINTSTRUCT ps;
-	static RECT rc;
+	RECT rc;
 	TCHAR szAppName[] = TEXT("Hello World !!!");
+	static int iColorFlag = 0;
 	switch (iMsg)
 	{
-	case WM_CREATE:
-		//GetClientRect(hwnd, &rc);
-		break;	
+	case WM_KEYDOWN:
+		switch (wParam)
+		{
+		case 27:
+			DestroyWindow(hwnd);
+			break;
+		default:
+			break;
+		}
+		break;
 
-	case WM_SIZE:
-		GetClientRect(hwnd, &rc);
+	case WM_CHAR:
+		switch (wParam)
+		{
+		case 'R':
+		case 'r':
+			iColorFlag = 1;
+			InvalidateRect(hwnd, NULL, TRUE);
+			break;
+		case 'G':
+		case 'g':
+			iColorFlag = 2;
+			InvalidateRect(hwnd, NULL, TRUE);
+			break;
+		case 'B':
+		case 'b':
+			iColorFlag = 3;
+			InvalidateRect(hwnd, NULL, TRUE);
+			break;
+		default:
+			iColorFlag = 0;
+			InvalidateRect(hwnd, NULL, TRUE);
+			break;
+		}
 		break;
 
 	case WM_PAINT:
-		//GetClientRect(hwnd, &rc);
+		GetClientRect(hwnd, &rc);
 		hdc = BeginPaint(hwnd, &ps);
 		SetBkColor(hdc, RGB(0, 0, 0));
-		SetTextColor(hdc, RGB(0, 255, 0));
+		if (iColorFlag == 1)
+		{
+			SetTextColor(hdc, RGB(255, 0, 0));
+		}
+		else if(iColorFlag == 2)
+		{
+			SetTextColor(hdc, RGB(0, 255, 0));
+		}
+		else if(iColorFlag == 3)
+		{
+			SetTextColor(hdc, RGB(0, 0, 255));
+		}
+		else
+		{
+			SetTextColor(hdc, RGB(255, 255, 255));
+		}
 		DrawText(hdc, "Hello, Windows 11 !!!", -1, &rc, DT_SINGLELINE | DT_CENTER | DT_VCENTER);
 		EndPaint(hwnd, &ps);
 		break;

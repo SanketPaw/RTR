@@ -64,26 +64,22 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT iMsg, WPARAM wParam, LPARAM lParam)
 {
 	// code 
 	HDC hdc;
-	PAINTSTRUCT ps;
-	static RECT rc;
+	RECT rc;
 	TCHAR szAppName[] = TEXT("Hello World !!!");
 	switch (iMsg)
 	{
-	case WM_CREATE:
-		//GetClientRect(hwnd, &rc);
-		break;	
-
+	
 	case WM_SIZE:
 		GetClientRect(hwnd, &rc);
 		break;
 
-	case WM_PAINT:
-		//GetClientRect(hwnd, &rc);
-		hdc = BeginPaint(hwnd, &ps);
+	case WM_LBUTTONDOWN:
+		GetClientRect(hwnd, &rc);
+		hdc = GetDC(hwnd);
 		SetBkColor(hdc, RGB(0, 0, 0));
 		SetTextColor(hdc, RGB(0, 255, 0));
 		DrawText(hdc, "Hello, Windows 11 !!!", -1, &rc, DT_SINGLELINE | DT_CENTER | DT_VCENTER);
-		EndPaint(hwnd, &ps);
+		ReleaseDC(hwnd, hdc);
 		break;
 
 	case WM_DESTROY:
