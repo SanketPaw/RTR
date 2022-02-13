@@ -346,7 +346,7 @@ int main(int argc, char** argv)
 
 	// Sets the starting position
 	// for the window
-	glutCreateWindow("Swastik");
+	glutCreateWindow("Flag");
 
 	// Creates the window and
 	// sets the title
