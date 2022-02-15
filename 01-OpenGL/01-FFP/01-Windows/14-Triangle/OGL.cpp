@@ -1,8 +1,15 @@
 // Header Files
 #include<windows.h>
-#include "icon.h"
+#include "OGL.h"
 #include<stdio.h>	// For FILE_IO()
 #include<stdlib.h>	//For Exit()
+// Opengl Header files 
+#include <Gl/gL.h>
+#define WIN_WIDTH 800
+#define WIN_HEIGHT 600
+
+//OpenGl Liabraries
+#pragma comment(lib,"OpenGl32.lib")
 
 //Global functions declarations
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
@@ -12,16 +19,25 @@ HWND ghwnd = FALSE;
 BOOL gbFullScreen = FALSE;
 FILE* gpFile = NULL;
 BOOL gbActiveWindow = FALSE;
+HDC ghdc;
+HGLRC ghrc = NULL;
 
 // Entry Point Function
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLine, int iCmdShow)
 {
+	// Function Declarion
+	int initialize(void);
+	void display(void);
+	void update(void);
+	void uninitialize(void);
+
 	//variable declaration 
 	WNDCLASSEX wndclass;
 	HWND hwnd;
 	MSG msg;
 	TCHAR szAppName[] = TEXT("MyWindow");
 	BOOL bDone = FALSE;
+	int iRetval = 0;
 
 	// code
 	if (fopen_s(&gpFile, "Log.txt", "w") != 0)
@@ -35,7 +51,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLi
 	}
 	// initialization of class WNDCLASSEX struction
 	wndclass.cbSize = sizeof(WNDCLASSEX);
-	wndclass.style = CS_HREDRAW | CS_VREDRAW;
+	wndclass.style = CS_HREDRAW | CS_VREDRAW|CS_OWNDC;
 	wndclass.cbClsExtra = 0;
 	wndclass.cbWndExtra = 0;
 	wndclass.lpfnWndProc = WndProc;
@@ -51,13 +67,13 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLi
 	RegisterClassEx(&wndclass);
 
 	// Create The Window
-	hwnd = CreateWindow(szAppName,
-		TEXT("Sanket Pawar"),
-		WS_OVERLAPPEDWINDOW,
+	hwnd = CreateWindowEx(WS_EX_APPWINDOW,szAppName,
+		TEXT("OpenGl Window"),
+		WS_OVERLAPPEDWINDOW|WS_CLIPCHILDREN|WS_CLIPSIBLINGS|WS_VISIBLE,
 		CW_USEDEFAULT,
 		CW_USEDEFAULT,
-		CW_USEDEFAULT,
-		CW_USEDEFAULT,
+		WIN_WIDTH,
+		WIN_HEIGHT,
 		NULL,
 		NULL,
 		hInstance,
@@ -65,11 +81,15 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLi
 
 	ghwnd = hwnd;
 
+	// initialize();
+	iRetval = initialize();
+	
 	// Show Window
 	ShowWindow(hwnd, iCmdShow);
 
-	// Update the Window
-	UpdateWindow(hwnd);
+	// Foregrounding and Focusing The Window
+	SetForegroundWindow(hwnd);
+	SetFocus(hwnd);
 
 	// Game Loop
 	while (bDone == FALSE)
@@ -90,7 +110,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLi
 		{
 			if (gbActiveWindow == TRUE)
 			{
-				// Here Game Runs
+				// Render The Scene
+				display();
+
+				// Update The Scene
+				update();
 			}
 		}
 	}
@@ -104,6 +128,8 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT iMsg, WPARAM wParam, LPARAM lParam)
 
 	//function declaration
 	void ToggleFullScreen();
+	void resize(int, int);
+	void uninitialize(void);
 
 	switch (iMsg)
 	{
@@ -130,6 +156,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT iMsg, WPARAM wParam, LPARAM lParam)
 
 
 	case WM_SIZE:
+		resize(LOWORD(lParam), HIWORD(lParam));
 		GetClientRect(hwnd, &rc);
 		break;
 
@@ -161,13 +188,15 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT iMsg, WPARAM wParam, LPARAM lParam)
 		gbActiveWindow = FALSE;
 		break;
 
+	case WM_ERASEBKGND:
+		break;
+
+	case WM_CLOSE:
+		DestroyWindow(hwnd);
+		break;
+
 	case WM_DESTROY:
-		if (gpFile)
-		{
-			fprintf(gpFile, "Log File SuccessFully CLosed\n");
-			fclose(gpFile);
-			gpFile = NULL;
-		}
+		uninitialize();
 		PostQuitMessage(0);
 		break;
 	default:
@@ -213,4 +242,124 @@ void ToggleFullScreen()
 		gbFullScreen = FALSE;
 	}
 
+}
+
+int initialize(void)
+{
+	// Function Declarations
+	
+	// Variable Declarations
+	PIXELFORMATDESCRIPTOR pfd;
+	int iPixelFormatIndex = 0;
+	// Code
+	ZeroMemory(&pfd, sizeof(PIXELFORMATDESCRIPTOR));
+	pfd.nSize = sizeof(PIXELFORMATDESCRIPTOR);
+	pfd.nVersion = 1;
+	pfd.dwFlags = PFD_DRAW_TO_WINDOW | PFD_SUPPORT_OPENGL | PFD_DOUBLEBUFFER;
+	pfd.iPixelType = PFD_TYPE_RGBA;
+	pfd.cColorBits = 32;
+	pfd.cRedBits = 8;
+	pfd.cGreenBits = 8;
+	pfd.cBlueBits = 8;
+	pfd.cAlphaBits = 8;
+
+	// Get DC
+	ghdc = GetDC(ghwnd);
+
+	// choose pixel Format
+	iPixelFormatIndex = ChoosePixelFormat(ghdc, &pfd);
+
+	if (iPixelFormatIndex == 0)
+	{
+		ReleaseDC(ghwnd, ghdc);
+		ghdc = NULL;
+	}
+
+	if (!SetPixelFormat(ghdc, iPixelFormatIndex, &pfd))
+	{
+		ReleaseDC(ghwnd, ghdc);
+		ghdc = NULL;
+	}
+
+	ghrc = wglCreateContext(ghdc);
+	if (ghrc == NULL)
+	{
+		ReleaseDC(ghwnd, ghdc);
+		ghdc = NULL;
+	}
+
+	if (!wglMakeCurrent(ghdc, ghrc))
+	{
+		wglDeleteContext(ghrc);
+		ghrc = NULL;
+
+		ReleaseDC(ghwnd, ghdc);
+		ghdc = NULL;
+	}
+
+	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+	return 0;
+}
+
+void resize(int width, int height)
+{
+	// Code
+	if (height == 0)
+		height = 1;
+	glViewport(0, 0, (GLsizei)width, (GLsizei)height);
+}
+
+void display(void)
+{
+	// Code
+	glClear(GL_COLOR_BUFFER_BIT);
+	glBegin(GL_TRIANGLES);
+	glColor3f(1.0f, 0.0f, 0.0f); glVertex3f(0.0f, 1.0f, 1.0f);
+	glColor3f(0.0f, 1.0f, 0.0f); glVertex3f(-1.0f, -1.0f, 1.0f);
+	glColor3f(0.0f, 0.0f, 1.0f); glVertex3f(1.0f, -1.0f, 0.0f);
+	glEnd();
+	SwapBuffers(ghdc);
+}
+
+void update(void)
+{
+	// Code
+}
+
+void uninitialize(void)
+{
+	// Function Declaration
+	void ToggleFullScreen(void);
+	
+	// Code
+	if (gbFullScreen)
+	{
+		ToggleFullScreen();
+	}
+	if (wglGetCurrentContext() == ghrc)
+	{
+		wglMakeCurrent(NULL, NULL);
+	}
+	if (ghrc)
+	{
+		wglDeleteContext(ghrc);
+		ghrc = NULL;
+	}
+	if (ghdc)
+	{
+		ReleaseDC(ghwnd, ghdc);
+		ghdc = NULL;	
+	}
+
+	if (ghwnd)
+	{
+		DestroyWindow(ghwnd);
+		ghwnd = NULL;
+	}
+	if (gpFile)
+	{
+		fprintf(gpFile, "Log File SuccessFully CLosed\n");
+		fclose(gpFile);
+		gpFile = NULL;
+	}
 }
