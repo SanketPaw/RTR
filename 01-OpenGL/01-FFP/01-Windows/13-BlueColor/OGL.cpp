@@ -19,12 +19,14 @@ HWND ghwnd = FALSE;
 BOOL gbFullScreen = FALSE;
 FILE* gpFile = NULL;
 BOOL gbActiveWindow = FALSE;
-HDC ghdc;
+HDC ghdc = NULL;
 HGLRC ghrc = NULL;
 
 // Entry Point Function
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLine, int iCmdShow)
 {
+	int x, y, width, height;
+
 	// Function Declarion
 	int initialize(void);
 	void display(void);
@@ -51,7 +53,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLi
 	}
 	// initialization of class WNDCLASSEX struction
 	wndclass.cbSize = sizeof(WNDCLASSEX);
-	wndclass.style = CS_HREDRAW | CS_VREDRAW|CS_OWNDC;
+	wndclass.style = CS_HREDRAW | CS_VREDRAW | CS_OWNDC;
 	wndclass.cbClsExtra = 0;
 	wndclass.cbWndExtra = 0;
 	wndclass.lpfnWndProc = WndProc;
@@ -66,10 +68,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLi
 	// Registering WNDCLASSEX
 	RegisterClassEx(&wndclass);
 
+	
+
 	// Create The Window
-	hwnd = CreateWindowEx(WS_EX_APPWINDOW,szAppName,
+	hwnd = CreateWindowEx(WS_EX_APPWINDOW, szAppName,
 		TEXT("OpenGl Window"),
-		WS_OVERLAPPEDWINDOW|WS_CLIPCHILDREN|WS_CLIPSIBLINGS|WS_VISIBLE,
+		WS_OVERLAPPEDWINDOW | WS_CLIPCHILDREN | WS_CLIPSIBLINGS | WS_VISIBLE,
 		CW_USEDEFAULT,
 		CW_USEDEFAULT,
 		WIN_WIDTH,
@@ -83,7 +87,26 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLi
 
 	// initialize();
 	iRetval = initialize();
-	
+	if (iRetval == -1)
+	{
+		fprintf(gpFile, "CHOOSEPIXELFORMAT FAILED !!!\n");
+		uninitialize();
+	}
+	if (iRetval == -2)
+	{
+		fprintf(gpFile, "SETPIXELFORMATFAILED !!!\n");
+		uninitialize();
+	}
+	if (iRetval == -3)
+	{
+		fprintf(gpFile, "CREATEOPENGLCONTEXT FAILED !!!\n");
+		uninitialize();
+	}
+	if (iRetval == -4)
+	{
+		fprintf(gpFile, "MAKINOPENGLCONTEXT AS CURRENT CONTEXT FAILED !!!\n");
+		uninitialize();
+	}
 	// Show Window
 	ShowWindow(hwnd, iCmdShow);
 
@@ -133,28 +156,6 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT iMsg, WPARAM wParam, LPARAM lParam)
 
 	switch (iMsg)
 	{
-	case WM_CREATE:
-	{
-		int sspWidth, sspHeight;
-		RECT rect;
-
-		// get screen size
-		sspWidth = GetSystemMetrics(SM_CXSCREEN);
-		sspHeight = GetSystemMetrics(SM_CYSCREEN);
-
-		// get window
-		GetWindowRect(hwnd, &rect);
-
-		//Reset the value in rect
-		rect.left = (sspWidth - rect.right) / 2;
-		rect.top = (sspHeight - rect.bottom) / 2;
-
-		// move the window to the specified position
-		SetWindowPos(hwnd, HWND_TOP, rect.left, rect.top, rect.right, rect.bottom, SWP_SHOWWINDOW);
-	}
-	break;
-
-
 	case WM_SIZE:
 		resize(LOWORD(lParam), HIWORD(lParam));
 		GetClientRect(hwnd, &rc);
@@ -271,32 +272,26 @@ int initialize(void)
 
 	if (iPixelFormatIndex == 0)
 	{
-		ReleaseDC(ghwnd, ghdc);
-		ghdc = NULL;
+		return -1;
 	}
 
-	if (!SetPixelFormat(ghdc, iPixelFormatIndex, &pfd))
+	if (SetPixelFormat(ghdc, iPixelFormatIndex, &pfd)==FALSE)
 	{
-		ReleaseDC(ghwnd, ghdc);
-		ghdc = NULL;
+		return -2;
 	}
 
+	// Ceate opengl rendering context
 	ghrc = wglCreateContext(ghdc);
 	if (ghrc == NULL)
 	{
-		ReleaseDC(ghwnd, ghdc);
-		ghdc = NULL;
+		return -3;
 	}
 
-	if (!wglMakeCurrent(ghdc, ghrc))
+	if (wglMakeCurrent(ghdc, ghrc) == FALSE)
 	{
-		wglDeleteContext(ghrc);
-		ghrc = NULL;
-
-		ReleaseDC(ghwnd, ghdc);
-		ghdc = NULL;
+		return -4;
 	}
-
+	// here stars opengl code
 	glClearColor(0.0f, 0.0f, 1.0f, 1.0f);
 	return 0;
 }
@@ -306,6 +301,7 @@ void resize(int width, int height)
 	// Code
 	if (height == 0)
 		height = 1;
+	
 	glViewport(0, 0, (GLsizei)width, (GLsizei)height);
 }
 

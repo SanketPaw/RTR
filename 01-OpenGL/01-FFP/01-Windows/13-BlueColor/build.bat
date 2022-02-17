@@ -1,7 +1,4 @@
 cls
-del OGL.exe
-del OGL.obj
-del OGL.res
 
 cl.exe /c /EHsc /I C:\freeglut\include OGL.cpp 
 

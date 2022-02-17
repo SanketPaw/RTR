@@ -1,6 +1,6 @@
 // Header Files
 #include<windows.h>
-#include "icon.h"
+#include "OGL.h"
 #include<stdio.h>	// For FILE_IO()
 #include<stdlib.h>	//For Exit()
 #define WIN_WIDTH 800
@@ -18,6 +18,8 @@ BOOL gbActiveWindow = FALSE;
 // Entry Point Function
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLine, int iCmdShow)
 {
+	int x, y, width, height;
+
 	// Function Declarion
 	int initialize(void);
 	void display(void);
@@ -57,6 +59,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLi
 
 	// Registering WNDCLASSEX
 	RegisterClassEx(&wndclass);
+
+	width = GetSystemMetrics(SM_CXSCREEN) / 2;
+	height = GetSystemMetrics(SM_CYSCREEN) / 2;
+
+	x = width(WIN_WIDTH / 2);
+	y = height - (WIN_WIDTH / 2);
 
 	// Create The Window
 	hwnd = CreateWindow(szAppName,
@@ -125,28 +133,6 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT iMsg, WPARAM wParam, LPARAM lParam)
 
 	switch (iMsg)
 	{
-	case WM_CREATE:
-	{
-		int sspWidth, sspHeight;
-		RECT rect;
-
-		// get screen size
-		sspWidth = GetSystemMetrics(SM_CXSCREEN);
-		sspHeight = GetSystemMetrics(SM_CYSCREEN);
-
-		// get window
-		GetWindowRect(hwnd, &rect);
-
-		//Reset the value in rect
-		rect.left = (sspWidth - rect.right) / 2;
-		rect.top = (sspHeight - rect.bottom) / 2;
-
-		// move the window to the specified position
-		SetWindowPos(hwnd, HWND_TOP, rect.left, rect.top, rect.right, rect.bottom, SWP_SHOWWINDOW);
-	}
-	break;
-
-
 	case WM_SIZE:
 		resize(LOWORD(lParam), HIWORD(lParam));
 		GetClientRect(hwnd, &rc);
@@ -166,7 +152,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT iMsg, WPARAM wParam, LPARAM lParam)
 				fclose(gpFile);
 				gpFile = NULL;
 			}
-			PostQuitMessage(0);
+			DestroyWindow(hwnd);
 		default:
 			break;
 		}

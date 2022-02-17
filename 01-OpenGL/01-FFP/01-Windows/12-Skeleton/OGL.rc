@@ -1,2 +1,3 @@
-#include "icon.h"
+#include "OGL.h"
 MYICON ICON dragon.ico
+
