@@ -3,8 +3,13 @@
 #include "OGL.h"
 #include<stdio.h>	// For FILE_IO()
 #include<stdlib.h>	//For Exit()
+// Opengl Header files 
+#include <Gl/gL.h>
 #define WIN_WIDTH 800
 #define WIN_HEIGHT 600
+
+//OpenGl Liabraries
+#pragma comment(lib,"OpenGl32.lib")
 
 //Global functions declarations
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
@@ -14,16 +19,17 @@ HWND ghwnd = FALSE;
 BOOL gbFullScreen = FALSE;
 FILE* gpFile = NULL;
 BOOL gbActiveWindow = FALSE;
+HDC ghdc = NULL;
+HGLRC ghrc = NULL;
 
 // Entry Point Function
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLine, int iCmdShow)
 {
-	int x, y, width, height;
-
 	// Function Declarion
 	int initialize(void);
 	void display(void);
 	void update(void);
+	void uninitialize(void);
 
 	//variable declaration 
 	WNDCLASSEX wndclass;
@@ -45,7 +51,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLi
 	}
 	// initialization of class WNDCLASSEX struction
 	wndclass.cbSize = sizeof(WNDCLASSEX);
-	wndclass.style = CS_HREDRAW | CS_VREDRAW;
+	wndclass.style = CS_HREDRAW | CS_VREDRAW | CS_OWNDC;
 	wndclass.cbClsExtra = 0;
 	wndclass.cbWndExtra = 0;
 	wndclass.lpfnWndProc = WndProc;
@@ -60,16 +66,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLi
 	// Registering WNDCLASSEX
 	RegisterClassEx(&wndclass);
 
-	width = GetSystemMetrics(SM_CXSCREEN) / 2;
-	height = GetSystemMetrics(SM_CYSCREEN) / 2;
 
-	x = width(WIN_WIDTH / 2);
-	y = height - (WIN_WIDTH / 2);
 
 	// Create The Window
-	hwnd = CreateWindow(szAppName,
-		TEXT("Sanket Pawar"),
-		WS_OVERLAPPEDWINDOW,
+	hwnd = CreateWindowEx(WS_EX_APPWINDOW, szAppName,
+		TEXT("OpenGl Window"),
+		WS_OVERLAPPEDWINDOW | WS_CLIPCHILDREN | WS_CLIPSIBLINGS | WS_VISIBLE,
 		CW_USEDEFAULT,
 		CW_USEDEFAULT,
 		WIN_WIDTH,
@@ -83,7 +85,26 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLi
 
 	// initialize();
 	iRetval = initialize();
-
+	if (iRetval == -1)
+	{
+		fprintf(gpFile, "CHOOSEPIXELFORMAT FAILED !!!\n");
+		uninitialize();
+	}
+	if (iRetval == -2)
+	{
+		fprintf(gpFile, "SETPIXELFORMATFAILED !!!\n");
+		uninitialize();
+	}
+	if (iRetval == -3)
+	{
+		fprintf(gpFile, "CREATEOPENGLCONTEXT FAILED !!!\n");
+		uninitialize();
+	}
+	if (iRetval == -4)
+	{
+		fprintf(gpFile, "MAKINOPENGLCONTEXT AS CURRENT CONTEXT FAILED !!!\n");
+		uninitialize();
+	}
 	// Show Window
 	ShowWindow(hwnd, iCmdShow);
 
@@ -133,6 +154,27 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT iMsg, WPARAM wParam, LPARAM lParam)
 
 	switch (iMsg)
 	{
+	case WM_CREATE:
+	{
+		int sspWidth, sspHeight;
+		RECT rect;
+
+		// get screen size
+		sspWidth = GetSystemMetrics(SM_CXSCREEN);
+		sspHeight = GetSystemMetrics(SM_CYSCREEN);
+
+		// get window
+		GetWindowRect(hwnd, &rect);
+
+		//Reset the value in rect
+		rect.left = (sspWidth - rect.right) / 2;
+		rect.top = (sspHeight - rect.bottom) / 2;
+
+		// move the window to the specified position
+		SetWindowPos(hwnd, HWND_TOP, rect.left, rect.top, rect.right, rect.bottom, SWP_SHOWWINDOW);
+	}
+	break;
+
 	case WM_SIZE:
 		resize(LOWORD(lParam), HIWORD(lParam));
 		GetClientRect(hwnd, &rc);
@@ -152,7 +194,8 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT iMsg, WPARAM wParam, LPARAM lParam)
 				fclose(gpFile);
 				gpFile = NULL;
 			}
-			DestroyWindow(hwnd);
+			uninitialize();
+			PostQuitMessage(0);
 		default:
 			break;
 		}
@@ -167,7 +210,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT iMsg, WPARAM wParam, LPARAM lParam)
 		break;
 
 	case WM_ERASEBKGND:
-		break;	// As This Is Reatined MOde Graphics Their Is WM_PAIN To Paint.
+		break;
 
 	case WM_CLOSE:
 		DestroyWindow(hwnd);
@@ -225,9 +268,53 @@ void ToggleFullScreen()
 int initialize(void)
 {
 	// Function Declarations
-	// Variable Declarations
-	// Code
+	void resize(int, int);	
 
+	// Variable Declarations
+	PIXELFORMATDESCRIPTOR pfd;
+	int iPixelFormatIndex = 0;
+	// Code
+	ZeroMemory(&pfd, sizeof(PIXELFORMATDESCRIPTOR));
+	pfd.nSize = sizeof(PIXELFORMATDESCRIPTOR);
+	pfd.nVersion = 1;
+	pfd.dwFlags = PFD_DRAW_TO_WINDOW | PFD_SUPPORT_OPENGL | PFD_DOUBLEBUFFER;
+	pfd.iPixelType = PFD_TYPE_RGBA;
+	pfd.cColorBits = 32;
+	pfd.cRedBits = 8;
+	pfd.cGreenBits = 8;
+	pfd.cBlueBits = 8;
+	pfd.cAlphaBits = 8;
+
+	// Get DC
+	ghdc = GetDC(ghwnd);
+
+	// choose pixel Format
+	iPixelFormatIndex = ChoosePixelFormat(ghdc, &pfd);
+
+	if (iPixelFormatIndex == 0)
+	{
+		return -1;
+	}
+
+	if (SetPixelFormat(ghdc, iPixelFormatIndex, &pfd) == FALSE)
+	{
+		return -2;
+	}
+
+	// Ceate opengl rendering context
+	ghrc = wglCreateContext(ghdc);
+	if (ghrc == NULL)
+	{
+		return -3;
+	}
+
+	if (wglMakeCurrent(ghdc, ghrc) == FALSE)
+	{
+		return -4;
+	}
+	// here stars opengl code
+	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+	resize(WIN_WIDTH, WIN_HEIGHT);		// WarmUp Resize Call
 	return 0;
 }
 
@@ -236,11 +323,42 @@ void resize(int width, int height)
 	// Code
 	if (height == 0)
 		height = 1;
+
+	glViewport(0, 0, (GLsizei)width, (GLsizei)height);
+
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+
+	if (width <= height)
+	{
+		glOrtho(-100.0f,
+			100.0f,
+			(-100.0f * ((GLfloat)height / (GLfloat)width)),
+			(100.0f * ((GLfloat)height / (GLfloat)width)),
+			- 100.0f,
+			100.0f);
+	}
+	else
+	{
+		glOrtho((-100.0f * ((GLfloat)width / (GLfloat)height)),
+			(100.0f * ((GLfloat)width / (GLfloat)height)),
+			-100.0f,
+			100.0f,
+			-100.0f,
+			100.0f);
+	}
 }
 
 void display(void)
 {
 	// Code
+	glClear(GL_COLOR_BUFFER_BIT);
+	glBegin(GL_TRIANGLES);
+	glColor3f(1.0f, 0.0f, 0.0f); glVertex3f(0.0f, 50.0f, 50.0f);
+	glColor3f(0.0f, 1.0f, 0.0f); glVertex3f(-50.0f, -50.0f, 50.0f);
+	glColor3f(0.0f, 0.0f, 1.0f); glVertex3f(50.0f, -50.0f, 0.0f);
+	glEnd();
+	SwapBuffers(ghdc);
 }
 
 void update(void)
@@ -252,12 +370,27 @@ void uninitialize(void)
 {
 	// Function Declaration
 	void ToggleFullScreen(void);
-	
+
 	// Code
 	if (gbFullScreen)
 	{
 		ToggleFullScreen();
 	}
+	if (wglGetCurrentContext() == ghrc)
+	{
+		wglMakeCurrent(NULL, NULL);
+	}
+	if (ghrc)
+	{
+		wglDeleteContext(ghrc);
+		ghrc = NULL;
+	}
+	if (ghdc)
+	{
+		ReleaseDC(ghwnd, ghdc);
+		ghdc = NULL;
+	}
+
 	if (ghwnd)
 	{
 		DestroyWindow(ghwnd);

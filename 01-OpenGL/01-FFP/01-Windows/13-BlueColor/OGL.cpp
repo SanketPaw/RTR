@@ -139,6 +139,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLi
 			}
 		}
 	}
+    uninitialize();
 	return (int)msg.wParam;
 }
 
@@ -150,7 +151,6 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT iMsg, WPARAM wParam, LPARAM lParam)
 	//function declaration
 	void ToggleFullScreen();
 	void resize(int, int);
-	void uninitialize(void);
 
 	switch (iMsg)
 	{
@@ -208,14 +208,14 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT iMsg, WPARAM wParam, LPARAM lParam)
 		break;
 
 	case WM_ERASEBKGND:
-		break;
+		return 0;
 
 	case WM_CLOSE:
 		DestroyWindow(hwnd);
 		break;
 
 	case WM_DESTROY:
-		uninitialize();
+
 		PostQuitMessage(0);
 		break;
 	default:
@@ -342,7 +342,7 @@ void uninitialize(void)
 	void ToggleFullScreen(void);
 	
 	// Code
-	if (gbFullScreen)
+	if (gbFullScreen == TRUE)
 	{
 		ToggleFullScreen();
 	}
