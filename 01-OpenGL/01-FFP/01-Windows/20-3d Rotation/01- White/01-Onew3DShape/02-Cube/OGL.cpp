@@ -23,7 +23,10 @@ FILE* gpFile = NULL;
 BOOL gbActiveWindow = FALSE;
 HDC ghdc = NULL;
 HGLRC ghrc = NULL;
-float fRotate = 0.0f;
+GLfloat anglePyramid = 0.0f;
+GLfloat angleCube = 0.0f;
+GLfloat speed = 0.1f;
+
 
 // Entry Point Function
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLine, int iCmdShow)
@@ -287,6 +290,7 @@ int initialize(void)
 	pfd.cGreenBits = 8;
 	pfd.cBlueBits = 8;
 	pfd.cAlphaBits = 8;
+	pfd.cDepthBits = 32;
 
 	// Get DC
 	ghdc = GetDC(ghwnd);
@@ -317,6 +321,14 @@ int initialize(void)
 	}
 	// here stars opengl code
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+
+	// Depth Related Functions
+	glClearDepth(1.0f);
+	glEnable(GL_DEPTH_TEST);
+	glDepthFunc(GL_LEQUAL);
+	glShadeModel(GL_SMOOTH);
+	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
+
 	resize(WIN_WIDTH, WIN_HEIGHT);		// WarmUp Resize Call
 	return 0;
 }
@@ -335,79 +347,85 @@ void resize(int width, int height)
 	gluPerspective(45.0f, (GLfloat)width / (GLfloat)height, 0.1f, 100.0f);
 }
 
+
+void drawSquare(void)
+{
+	glBegin(GL_QUADS);
+
+	//Top face
+	//glColor3f(1.0f, 0.0f, 0.0f);
+	glVertex3f(1.0f, 1.0f, -1.0f);
+	glVertex3f(-1.0f, 1.0f, -1.0f);
+	glVertex3f(-1.0f, 1.0f, 1.0f);
+	glVertex3f(1.0f, 1.0f, 1.0f);
+
+	//Bottom face
+	//glColor3f(0.0f, 1.0f, 0.0f);
+	glVertex3f(1.0f, -1.0f, -1.0f);
+	glVertex3f(-1.0f, -1.0f, -1.0f);
+	glVertex3f(-1.0f, -1.0f, 1.0f);
+	glVertex3f(1.0f, -1.0f, 1.0f);
+
+	//Front face
+	//glColor3f(0.0f, 0.0f, 1.0f);
+	glVertex3f(1.0f, 1.0f, 1.0f);
+	glVertex3f(-1.0f, 1.0f, 1.0f);
+	glVertex3f(-1.0f, -1.0f, 1.0f);
+	glVertex3f(1.0f, -1.0f, 1.0f);
+
+	//Back face
+	//glColor3f(0.0f, 1.0f, 1.0f);
+	glVertex3f(1.0f, 1.0f, -1.0f);
+	glVertex3f(-1.0f, 1.0f, -1.0f);
+	glVertex3f(-1.0f, -1.0f, -1.0f);
+	glVertex3f(1.0f, -1.0f, -1.0f);
+
+	//right face
+	//glColor3f(1.0f, 0.0f, 1.0f);
+	glVertex3f(1.0f, 1.0f, -1.0f);
+	glVertex3f(1.0f, 1.0f, 1.0f);
+	glVertex3f(1.0f, -1.0f, 1.0f);
+	glVertex3f(1.0f, -1.0f, -1.0f);
+
+	//left face
+	//glColor3f(1.0f, 1.0f, 0.0f);
+	glVertex3f(-1.0f, 1.0f, 1.0f);
+	glVertex3f(-1.0f, 1.0f, -1.0f);
+	glVertex3f(-1.0f, -1.0f, -1.0f);
+	glVertex3f(-1.0f, -1.0f, 1.0f);
+
+	glEnd();
+}
+
 void display(void)
 {
-	void DrawColoredTriangle(void);
-	void DrawWhiteTriangle();
-	void DrawWhiteRectangle();
 	// Code
-	glClear(GL_COLOR_BUFFER_BIT);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
-
-	glTranslatef(-3.0f, 0.0f, -8.0f);
-	glRotatef(fRotate, 1.0f, 0.0f, 0.0f);
-
-	DrawColoredTriangle();
-
-	//glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
-
-	glTranslatef(0.0f, 0.0f, -8.0f);
-	glRotatef(fRotate, 0.0f, 1.0f, 0.0f);
-
-	DrawWhiteTriangle();
-
-	//glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
-
-	glTranslatef(3.0f, 0.0f, -8.0f);
-	glRotatef(fRotate, 0.0f, 0.0f, 1.0f);
-
-	DrawWhiteRectangle();
-
+	glTranslatef(0.0f, 0.0f, -6.0f);
+	glRotatef(anglePyramid, 1.0f, 0.0f, 0.0f);
+	glRotatef(anglePyramid, 0.0f, 1.0f, 0.0f);
+	glRotatef(anglePyramid, 0.0f, 0.0f, 1.0f);
+	drawSquare();
 	SwapBuffers(ghdc);
 }
 
-void DrawColoredTriangle()
-{
-	// code 
-	glBegin(GL_TRIANGLES);
-	glColor3f(1.0f, 0.0f, 0.0f); glVertex3f(0.0f, 1.0f, 1.0f);
-	glColor3f(0.0f, 1.0f, 0.0f); glVertex3f(-1.0f, -1.0f, 1.0f);
-	glColor3f(0.0f, 0.0f, 1.0f); glVertex3f(1.0f, -1.0f, 0.0f);
-	glEnd();
-}
-
-void DrawWhiteTriangle()
-{
-	// code
-	glColor3f(1, 1, 1);
-	glBegin(GL_TRIANGLES);
-	glVertex3f(0.0f, 1.0f, 1.0f);
-	glVertex3f(-1.0f, -1.0f, 1.0f);
-	glVertex3f(1.0f, -1.0f, 0.0f);
-	glEnd();
-}
-
-void DrawWhiteRectangle()
-{
-	// code
-	glColor3f(1, 1, 1);
-	glBegin(GL_QUADS);
-	glVertex3f(1, 1, 0);
-	glVertex3f(-1.0f, 1.0f, 0.0f);
-	glVertex3f(-1.0f, -1.0f, 0.0f);
-	glVertex3f(1.0f, -1.0f, 0.0f);
-	glEnd();
-}
-
-
 void update(void)
 {
-	// Code
-}
+	angleCube += speed;
+	anglePyramid += speed;
 
+	if (angleCube <= -360.0f)
+	{
+		angleCube = 0.0f;
+	}
+
+	if (anglePyramid >= 360.0f)
+	{
+			anglePyramid = 0.0f;
+	}
+}
 
 void uninitialize(void)
 {

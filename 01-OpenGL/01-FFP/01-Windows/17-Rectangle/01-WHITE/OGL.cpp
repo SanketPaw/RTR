@@ -1,3 +1,4 @@
+
 // Header Files
 #include<windows.h>
 #include "OGL.h"
@@ -342,8 +343,9 @@ void display(void)
 	glLoadIdentity();
 
 	glTranslatef(0.0f, 0.0f, -3.0f);
+	glColor3f(1, 1, 1);
 	glBegin(GL_QUADS);
-	glColor3f(0, 0, 1);
+	glColor3f(1, 1, 1);
 	glVertex3f(1, 1, 0);
 	glVertex3f(-1.0f, 1.0f, 0.0f);
 	glVertex3f(-1.0f, -1.0f, 0.0f);

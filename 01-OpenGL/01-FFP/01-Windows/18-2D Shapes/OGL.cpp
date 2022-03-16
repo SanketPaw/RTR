@@ -23,7 +23,6 @@ FILE* gpFile = NULL;
 BOOL gbActiveWindow = FALSE;
 HDC ghdc = NULL;
 HGLRC ghrc = NULL;
-float fRotate = 0.0f;
 
 // Entry Point Function
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLine, int iCmdShow)
@@ -335,79 +334,54 @@ void resize(int width, int height)
 	gluPerspective(45.0f, (GLfloat)width / (GLfloat)height, 0.1f, 100.0f);
 }
 
+
+void drawSquare(void)
+{
+	glBegin(GL_QUADS);
+
+	glColor3f(0, 0, 1);
+	glVertex3f(-1.0f, 1.0f, 0.0f);
+	glVertex3f(-1.0f, -1.0f, 0.0f);
+	glVertex3f(1.0f, -1.0f, 0.0f);
+	glVertex3f(1.0f, 1.0f, 0.0f);
+
+	glEnd();
+}
+
+void drawTriangle(void)
+{
+	glBegin(GL_TRIANGLES);
+
+	glColor3f(1.0f, 0.0f, 0.0f);
+	glVertex3f(0.0f, 1.0f, 0.0f);
+
+	glColor3f(0.0f, 1.0f, 0.0f);
+	glVertex3f(-1.0f, -1.0f, 0.0f);
+
+	glColor3f(0.0f, 0.0f, 1.0f);
+	glVertex3f(1.0f, -1.0f, 0.0f);
+
+	glEnd();
+}
+
 void display(void)
 {
-	void DrawColoredTriangle(void);
-	void DrawWhiteTriangle();
-	void DrawWhiteRectangle();
 	// Code
 	glClear(GL_COLOR_BUFFER_BIT);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
-
-	glTranslatef(-3.0f, 0.0f, -8.0f);
-	glRotatef(fRotate, 1.0f, 0.0f, 0.0f);
-
-	DrawColoredTriangle();
-
-	//glMatrixMode(GL_MODELVIEW);
+	glTranslatef(-1.5f, 0.0f, -6.0f);
+	drawTriangle();
 	glLoadIdentity();
-
-	glTranslatef(0.0f, 0.0f, -8.0f);
-	glRotatef(fRotate, 0.0f, 1.0f, 0.0f);
-
-	DrawWhiteTriangle();
-
-	//glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
-
-	glTranslatef(3.0f, 0.0f, -8.0f);
-	glRotatef(fRotate, 0.0f, 0.0f, 1.0f);
-
-	DrawWhiteRectangle();
-
+	glTranslatef(1.5f, 0.0f, -6.0f);
+	drawSquare();
 	SwapBuffers(ghdc);
 }
-
-void DrawColoredTriangle()
-{
-	// code 
-	glBegin(GL_TRIANGLES);
-	glColor3f(1.0f, 0.0f, 0.0f); glVertex3f(0.0f, 1.0f, 1.0f);
-	glColor3f(0.0f, 1.0f, 0.0f); glVertex3f(-1.0f, -1.0f, 1.0f);
-	glColor3f(0.0f, 0.0f, 1.0f); glVertex3f(1.0f, -1.0f, 0.0f);
-	glEnd();
-}
-
-void DrawWhiteTriangle()
-{
-	// code
-	glColor3f(1, 1, 1);
-	glBegin(GL_TRIANGLES);
-	glVertex3f(0.0f, 1.0f, 1.0f);
-	glVertex3f(-1.0f, -1.0f, 1.0f);
-	glVertex3f(1.0f, -1.0f, 0.0f);
-	glEnd();
-}
-
-void DrawWhiteRectangle()
-{
-	// code
-	glColor3f(1, 1, 1);
-	glBegin(GL_QUADS);
-	glVertex3f(1, 1, 0);
-	glVertex3f(-1.0f, 1.0f, 0.0f);
-	glVertex3f(-1.0f, -1.0f, 0.0f);
-	glVertex3f(1.0f, -1.0f, 0.0f);
-	glEnd();
-}
-
 
 void update(void)
 {
 	// Code
 }
-
 
 void uninitialize(void)
 {

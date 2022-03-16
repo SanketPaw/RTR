@@ -326,12 +326,16 @@ void resize(int width, int height)
 	if (height == 0)
 		height = 1;
 
-	glViewport(0, 0, (GLsizei)width, (GLsizei)height);
+	/*glViewport(0, 0, (GLsizei)width, (GLsizei)height);
 
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 
-	gluPerspective(45.0f, (GLfloat)width / (GLfloat)height, 0.1f, 100.0f);
+	gluPerspective(45.0f, (GLfloat)width / (GLfloat)height, 0.1f, 100.0f);*/
+	glViewport(0, 0, (GLsizei)width, (GLsizei)height);
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	gluPerspective(0.0f, (GLfloat)width / (GLfloat)height, -1.0f, 1.0f);
 }
 
 void display(void)
@@ -343,7 +347,8 @@ void display(void)
 
 	glTranslatef(0.0f, 0.0f, -3.0f);
 	glBegin(GL_TRIANGLES);
-	glVertex3f(0.0f, 1.0f, 1.0f);
+	glColor3f(1, 1, 1);
+	glVertex3f(0.0f, 1.0f, 0.0f);
 	glVertex3f(-1.0f, -1.0f, 1.0f);
 	glVertex3f(1.0f, -1.0f, 0.0f);
 	glEnd();
