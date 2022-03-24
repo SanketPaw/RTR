@@ -350,7 +350,7 @@ int initialize(void)
 	translationMatrix[1] = 0.0f; translationMatrix[5] = 1.0f; translationMatrix[9] = 0.0f; translationMatrix[13] = 0.0f;
 	translationMatrix[2] = 0.0f; translationMatrix[6] = 0.0f; translationMatrix[10] = 1.0f; translationMatrix[14] = -6.0f;
 	translationMatrix[3] = 0.0f; translationMatrix[7] = 0.0f; translationMatrix[11] = 0.0f; translationMatrix[15] = 1.0f;
-	
+
 
 	//Scale Matrix
 	scaleMatrix[0] = 0.75f; scaleMatrix[4] = 0.0f; scaleMatrix[8] = 0.0f; scaleMatrix[12] = 0.0f;
@@ -436,7 +436,7 @@ void display(void)
 	//glTranslatef(0.0f, 0.0f, -4.0f);
 	glMultMatrixf(translationMatrix);
 	glMultMatrixf(scaleMatrix);
-	
+
 	/*glRotatef(angleCube, 1.0f, 0.0f, 0.0f);
 	glRotatef(angleCube, 0.0f, 1.0f, 0.0f);
 	glRotatef(angleCube, 0.0f, 0.0f, 1.0f);*/
@@ -479,7 +479,7 @@ void update(void)
 
 	if (anglePyramid >= 360.0f)
 	{
-			anglePyramid = 0.0f;
+		anglePyramid = 0.0f;
 	}
 }
 
