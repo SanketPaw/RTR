@@ -3,16 +3,13 @@
 #include "OGL.h"
 #include<stdio.h>	// For FILE_IO()
 #include<stdlib.h>	//For Exit()
-#include<math.h>
 // Opengl Header files 
-#include <Gl/gl.h>
-#include<GL/glu.h>
+#include <Gl/gL.h>
 #define WIN_WIDTH 800
 #define WIN_HEIGHT 600
 
 //OpenGl Liabraries
 #pragma comment(lib,"OpenGl32.lib")
-#pragma comment(lib,"glu32.lib")
 
 //Global functions declarations
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
@@ -24,10 +21,6 @@ FILE* gpFile = NULL;
 BOOL gbActiveWindow = FALSE;
 HDC ghdc = NULL;
 HGLRC ghrc = NULL;
-GLfloat anglePyramid = 0.0f;
-GLfloat angleCube = 0.0f;
-GLfloat speed = 0.1f;
-float i;
 
 // Entry Point Function
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLine, int iCmdShow)
@@ -201,7 +194,6 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT iMsg, WPARAM wParam, LPARAM lParam)
 				fclose(gpFile);
 				gpFile = NULL;
 			}
-			uninitialize();
 			PostQuitMessage(0);
 		default:
 			break;
@@ -275,7 +267,6 @@ void ToggleFullScreen()
 int initialize(void)
 {
 	// Function Declarations
-	void resize(int, int);
 
 	// Variable Declarations
 	PIXELFORMATDESCRIPTOR pfd;
@@ -291,7 +282,6 @@ int initialize(void)
 	pfd.cGreenBits = 8;
 	pfd.cBlueBits = 8;
 	pfd.cAlphaBits = 8;
-	pfd.cDepthBits = 32;
 
 	// Get DC
 	ghdc = GetDC(ghwnd);
@@ -322,15 +312,6 @@ int initialize(void)
 	}
 	// here stars opengl code
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-
-	// Depth Related Functions
-	glClearDepth(1.0f);
-	glEnable(GL_DEPTH_TEST);
-	glDepthFunc(GL_LEQUAL);
-	glShadeModel(GL_SMOOTH);
-	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
-
-	resize(WIN_WIDTH, WIN_HEIGHT);		// WarmUp Resize Call
 	return 0;
 }
 
@@ -341,108 +322,38 @@ void resize(int width, int height)
 		height = 1;
 
 	glViewport(0, 0, (GLsizei)width, (GLsizei)height);
-
-	glMatrixMode(GL_PROJECTION);
-	glLoadIdentity();
-
-	gluPerspective(45.0f, (GLfloat)width / (GLfloat)height, 0.1f, 100.0f);
 }
 
-void drawPyramid(void)
+void drawXAxis(void)
 {
-	glBegin(GL_TRIANGLES);
-
-	//Front Face
-
-	// Front face
+	glLoadIdentity();
+	glLineWidth(3.0f);
+	glBegin(GL_LINES);
 	glColor3f(1.0f, 0.0f, 0.0f);
-	glVertex3f(0.0f, 1.0f, 0.0f);
-
-	glColor3f(0.0f, 1.0f, 0.0f);
-	glVertex3f(-1.0f, -1.0f, 1.0f);
-
-	glColor3f(0.0f, 0.0f, 1.0f);
-	glVertex3f(1.0f, -1.0f, 1.0f);
-
-	// Right face
-	glColor3f(1.0f, 0.0f, 0.0f);
-	glVertex3f(0.0f, 1.0f, 0.0f);
-
-	glColor3f(0.0f, 0.0f, 1.0f);
-	glVertex3f(1.0f, -1.0f, 1.0f);
-
-	glColor3f(0.0f, 1.0f, 0.0f);
-	glVertex3f(1.0f, -1.0f, -1.0f);
-
-	// Back face
-	glColor3f(1.0f, 0.0f, 0.0f);
-	glVertex3f(0.0f, 1.0f, 0.0f);
-
-	glColor3f(0.0f, 1.0f, 0.0f);
-	glVertex3f(1.0f, -1.0f, -1.0f);
-
-	glColor3f(0.0f, 0.0f, 1.0f);
-	glVertex3f(-1.0f, -1.0f, -1.0f);
-
-	// Left face
-	glColor3f(1.0f, 0.0f, 0.0f);
-	glVertex3f(0.0f, 1.0f, 0.0f);
-
-	glColor3f(0.0f, 0.0f, 1.0f);
-	glVertex3f(-1.0f, -1.0f, -1.0f);
-
-	glColor3f(0.0f, 1.0f, 0.0f);
-	glVertex3f(-1.0f, -1.0f, 1.0f);
-
+	glVertex3f(-1.0f, 0.0f, 0.0f);
+	glVertex3f(1.0f, 0.0f, 0.0f);
 
 	glEnd();
 }
 
-void drawcube(void)
+void DrawHorizontalLines(void)
 {
-	glBegin(GL_QUADS);
-
-	//Top face
-	glColor3f(1.0f, 0.0f, 0.0f);
-	glVertex3f(1.0f, 1.0f, -1.0f);
-	glVertex3f(-1.0f, 1.0f, -1.0f);
-	glVertex3f(-1.0f, 1.0f, 1.0f);
-	glVertex3f(1.0f, 1.0f, 1.0f);
-
-	//Bottom face
-	glColor3f(0.0f, 1.0f, 0.0f);
-	glVertex3f(1.0f, -1.0f, -1.0f);
-	glVertex3f(-1.0f, -1.0f, -1.0f);
-	glVertex3f(-1.0f, -1.0f, 1.0f);
-	glVertex3f(1.0f, -1.0f, 1.0f);
-
-	//Front face
+	int numberOfLines = 20;
+	float difference = 1.0f / numberOfLines;
+	glLoadIdentity();
+	glLineWidth(1.0f);
+	glBegin(GL_LINES);
 	glColor3f(0.0f, 0.0f, 1.0f);
-	glVertex3f(1.0f, 1.0f, 1.0f);
-	glVertex3f(-1.0f, 1.0f, 1.0f);
-	glVertex3f(-1.0f, -1.0f, 1.0f);
-	glVertex3f(1.0f, -1.0f, 1.0f);
+	for (int counter = 1; counter <= numberOfLines; ++counter)
+	{
+		// Positive axis
+		glVertex3f(-1.0f, (counter * difference), 0.0f);
+		glVertex3f(1.0f, (counter * difference), 0.0f);
 
-	//Back face
-	glColor3f(0.0f, 1.0f, 1.0f);
-	glVertex3f(1.0f, 1.0f, -1.0f);
-	glVertex3f(-1.0f, 1.0f, -1.0f);
-	glVertex3f(-1.0f, -1.0f, -1.0f);
-	glVertex3f(1.0f, -1.0f, -1.0f);
-
-	//right face
-	glColor3f(1.0f, 0.0f, 1.0f);
-	glVertex3f(1.0f, 1.0f, -1.0f);
-	glVertex3f(1.0f, 1.0f, 1.0f);
-	glVertex3f(1.0f, -1.0f, 1.0f);
-	glVertex3f(1.0f, -1.0f, -1.0f);
-
-	//left face
-	glColor3f(1.0f, 1.0f, 0.0f);
-	glVertex3f(-1.0f, 1.0f, 1.0f);
-	glVertex3f(-1.0f, 1.0f, -1.0f);
-	glVertex3f(-1.0f, -1.0f, -1.0f);
-	glVertex3f(-1.0f, -1.0f, 1.0f);
+		// Negative axis
+		glVertex3f(-1.0f, (-counter * difference), 0.0f);
+		glVertex3f(1.0f, (-counter * difference), 0.0f);
+	}
 
 	glEnd();
 }
@@ -450,34 +361,15 @@ void drawcube(void)
 void display(void)
 {
 	// Code
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
-	glTranslatef(0.0f, 0.0f, -5.0f);
-	glScalef(0.5f, 0.5f, 0.5f);
-	//glRotatef(45.0f, 0.0f, 1.0f, 0.0f);
-	gluLookAt(0, 0, 0, cos(i), 0, sin(i), 0, 1, 0);
-	drawcube();
-	//gluLookAt(cos(i) + 13.0f, 0, sin(i) + 7.0f, 0, 0, 0, 0, 1, 0);
-	
-
-	//glLoadIdentity();
-	//glTranslatef(0.0f, 0.0f, -5.0f);
-	//glScalef(0.12f, 0.12f, 0.12f);
-
-	//*gluLookAt(0, 0, 0, cos(i), 0, sin(i), 0, 1, 0);
-	//gluLookAt(cos(i) + 13.0f, 0, sin(i) + 7.0f, 0, 0, 0, 0, 1, 0);*/
-	//drawcube();
+	glClear(GL_COLOR_BUFFER_BIT);
+	drawXAxis();
+	DrawHorizontalLines();
 	SwapBuffers(ghdc);
 }
 
 void update(void)
 {
-	i = i + 0.002;
-	if (i >= 360.0f)
-	{
-		i = i - 360.0f;
-	}
+	// Code
 }
 
 void uninitialize(void)
