@@ -345,6 +345,8 @@ int initialize(void)
 	glShadeModel(GL_SMOOTH);
 	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
 
+	quadric = gluNewQuadric();
+
 	resize(WIN_WIDTH, WIN_HEIGHT);		// WarmUp Resize Call
 	return 0;
 }
@@ -376,13 +378,13 @@ void drawSolarSystem(void)
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
 	// Draw the sun
-	quadric = gluNewQuadric();
 	glColor3f(1.0f, 1.0f, 0.0f);
 
 	// 3rd parameter is for slices (like longitudes)
 	// 4th parameter is for stacks (like latitudes)
 	// Higher the value of 3rd and 4th parameters, i.e. more the subdivisions,
 	// more circular the sphere will look.
+	gluQuadricTexture(quadric, GLU_TRUE);
 	gluSphere(quadric, 0.75, 30, 30);
 
 	// Pop back to initial state.
@@ -403,7 +405,6 @@ void drawSolarSystem(void)
 	glRotatef((GLfloat)day, 0.0f, 0.0f, 1.0f);
 
 	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-	quadric = gluNewQuadric();
 	glColor3f(0.4f, 0.9f, 1.0f);
 	gluSphere(quadric, 0.2f, 20, 20);
 

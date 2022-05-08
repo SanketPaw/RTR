@@ -55,6 +55,7 @@ GLfloat planeAngle = 80.0f;
 
 bool Flag = false;
 
+int state = 0;
 
 // Entry Point Function
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLine, int iCmdShow)
@@ -1151,7 +1152,7 @@ void update(void)
 	}
 	if (flag_plane)
 	{
-		static int state = 0;
+		//static int state = 0;
 		switch (state)
 		{
 		case 0:
@@ -1183,9 +1184,9 @@ void update(void)
 			planeY += 0.004f;
 			planeAngle -= 0.025f;
 
-			if (planeX >= 15.0f)
-				state++;
-			break;
+		//	/*if (planeX >= 15.0f)
+		//		state++;*/
+		//	break;
 
 		default:
 			break;

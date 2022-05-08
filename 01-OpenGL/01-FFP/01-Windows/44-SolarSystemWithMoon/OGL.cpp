@@ -345,6 +345,8 @@ int initialize(void)
 	glShadeModel(GL_SMOOTH);
 	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
 
+	quadric = gluNewQuadric();
+
 	resize(WIN_WIDTH, WIN_HEIGHT);		// WarmUp Resize Call
 	return 0;
 }
@@ -380,7 +382,6 @@ void display(void)
 	glRotatef(90.0f, 1.0f, 0.0f, 0.0f); // to adjust sphere poles
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	glColor3f(1.0f, 1.0f, 0.0f);
-	quadric = gluNewQuadric();
 	gluSphere(quadric, 0.75f, 30, 30);
 	glPopMatrix();
 
@@ -391,13 +392,11 @@ void display(void)
 	glRotatef((GLfloat)day, 0.0f, 0.0f, 1.0f);
 	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	glColor3f(0.4f, 0.9f, 1.0f);
-	quadric = gluNewQuadric();
 	gluSphere(quadric, 0.2f, 20, 20);
 
 	glTranslatef(0.5f, 0.0f, 0.0f);
 	//glRotatef(90.0f, 1.0f, 0.0f, 0.0f); 
 	glColor3f(1.0f, 1.0f, 1.0f);
-	quadric = gluNewQuadric();
 	gluSphere(quadric, 0.1f, 20, 20);
 
 	glPopMatrix();

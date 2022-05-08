@@ -342,6 +342,8 @@ int initialize(void)
 	glShadeModel(GL_SMOOTH);
 	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
 
+	quadric = gluNewQuadric();
+
 	resize(WIN_WIDTH, WIN_HEIGHT);		// WarmUp Resize Call
 	return 0;
 }
@@ -371,7 +373,6 @@ void drawRobotArm(void)
 	glPushMatrix();
 
 	glScalef(2.0f, 0.5f, 1.0f);
-	quadric = gluNewQuadric();
 	glColor3f(0.5f, 0.35f, 0.05f);
 	gluSphere(quadric, 0.5, 10, 10);
 
@@ -386,7 +387,6 @@ void drawRobotArm(void)
 	// Push the elbow transformation state.
 	glPushMatrix();
 	glScalef(2.0f, 0.5f, 1.0f);
-	quadric = gluNewQuadric();
 	glColor3f(0.5f, 0.35f, 0.05f);
 	gluSphere(quadric, 0.5, 10, 10);
 
