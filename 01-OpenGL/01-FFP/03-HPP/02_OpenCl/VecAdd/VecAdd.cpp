@@ -302,4 +302,121 @@ int main(void)
 	{
 		sprintf(str, "Comparison Of CPU and GPU Vector Addition is Not Within Accuracy of 0.000001 at array index %d");
 	}
+	// output 
+	printf("Array1 begins from 0th index %.6f to %.dth index %.6f\n", hostInput1[0], iNumberOfArrayElements - 1, hostInput1[iNumberOfArrayElements - 1]);
+	printf("Array2 begins from 0th index %.6f to %.dth index %.6f\n", hostInput2[0], iNumberOfArrayElements - 1, hostInput2[iNumberOfArrayElements - 1]);
+	printf("OpenCl Kernel Global Work Size=%lu and local Work Size =  %lu\n", globalWorkSize, loacalWorkSize);
+	printf("Output Array Begins From 0th index %.6f to %dth index %.6f\n", hostOutput[0], iNumberOfArrayElements - 1, hostOutput[iNumberOfArrayElements - 1]);
+	printf("Time taken for Vector Addition On CPU = %.6f\n", timeOnCPU);
+	printf("Time Take For Vector Addition On GPU = .6f\n", timeOnGPU);
+
+	// cleanup
+	cleanup();
+
+	return 0;
+}
+
+void fillFloatArrayWithRandomNumbers(float* arr, int len)
+{
+	// code
+	const float fscale = 1.0f / (float)RAND_MAX;
+	for (int i = 0; i < len; i++)
+	{
+		arr[i] = fscale * rand();
+	}
+}
+
+void vecAddCPU(const float* arr1, const float* arr2, float* out, int len)
+{
+	// code 
+	StopWatchInterface* timer = NULL;
+	sdkCreateTimer(&timer);
+	sdkStartTimer(&timer);
+
+	for (int i = 0; i < len; i++)
+	{
+		out[i] = arr[i] + arr2[i];
+	}
+	sdkStopTimer(&timer);
+	timeOnCPU = sdkGetTimerValue(&timer);
+	sdkDeleteTimer(&timer);
+	timer = NULL;
+}
+
+size_t roundGlobalSizeToNearestMultipleOfLocalSize(int local_size, unsigned int global_size)
+{
+	// code 
+	unsigned int r = global_size % local_size;
+	if (r == 0)
+	{
+		return global_size;
+	}
+	else
+	{
+		return global_size + local_size - r;
+	}
+}
+
+void cleanup(void)
+{
+	// code
+	if (DeviceOutput)
+	{
+		clReleaseMemObject(DeviceOutput);
+		DeviceOutput = NULL;
+	}
+
+	if (DeviceInput1)
+	{
+		clReleaseMemObject(DeviceInput1);
+		DeviceInput1 = NULL;
+	}
+
+	if (DeviceInput2)
+	{
+		clReleaseMemObject(DeviceInput2);
+		DeviceInput2 = NULL;
+	}
+
+	if (oclKernel)
+	{
+		clReleaseKernel(oclKernel);
+		oclKernel = NULL;
+	}
+
+	if (oclProgram)
+	{
+		clReleaseProgram(oclProgram);
+		oclKernel = NULL;
+	}
+
+	if (oclCommandQueue)
+	{
+		clReleaseCommandQueue(oclCommandQueue);
+		oclCommandQueue = NULL;
+	}
+
+	if (oclContext)
+	{
+		clReleaseContext(oclContext);
+		oclContext = NULL;
+	}
+
+	if (HostOutput)
+	{
+		free(HostOutput);
+		HostOutput = NULL;
+	}
+
+	if (HostInput1)
+	{
+		free(HostInput1);
+		HostInput1 = NULL;
+	}
+
+	if (HostInput2)
+	{
+		free(HostInput2);
+		HostInput2 = NULL;
+	}
 }
