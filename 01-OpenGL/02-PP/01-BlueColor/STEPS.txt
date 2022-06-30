@@ -1,0 +1,4 @@
+A] GLEW related steps:
+	1 - include file
+	2 - linking with import library
+	3 - Initialzation of GLEW 
