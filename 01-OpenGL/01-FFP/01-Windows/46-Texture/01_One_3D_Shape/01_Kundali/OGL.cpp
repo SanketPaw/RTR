@@ -26,7 +26,7 @@ HGLRC ghrc = NULL;
 GLfloat angleCube = 0.0f;
 GLfloat speed = 0.1f;
 
-GLuint	kundali_texture = 0;
+GLuint	shivaji_texture = 0;
 
 // Entry Point Function
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLine, int iCmdShow)
@@ -396,8 +396,6 @@ void resize(int width, int height)
 	gluPerspective(45.0f, (GLfloat)width / (GLfloat)height, 0.1f, 100.0f);
 }
 
-
-
 void display(void)
 {
 	// code
@@ -412,7 +410,7 @@ void display(void)
 	glRotatef(angleCube, 0.0f, 0.0f, 1.0f);
 
 
-	glBindTexture(GL_TEXTURE_2D, kundali_texture);
+	glBindTexture(GL_TEXTURE_2D, shivaji_texture);
 	glBegin(GL_QUADS);
 	/* Top */
 	glTexCoord2f(0.0f, 1.0f);

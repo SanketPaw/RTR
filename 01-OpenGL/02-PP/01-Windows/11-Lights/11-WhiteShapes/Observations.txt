@@ -1,0 +1,1 @@
+* While resizing the background color of window becomes white while dragging and again goes to blue.
